@@ -806,11 +806,7 @@ object ThemeEngine {
         }
     }
 
-    /**
-     * True when [argb] is grey-ish (RGB channels within 32 of each other). Input backgrounds are
-     * neutral in every Discord theme; a saturated match (e.g. a green banner that happens to share
-     * the search box's 40dp/8dp/bordered shape) is the wrong view and must not become INPUT_BG.
-     */
+    /** Input backgrounds are grey in every theme; a saturated match is the wrong view. */
     private fun isNeutralColor(argb: Long): Boolean {
         val r = ((argb ushr 16) and 0xFFL).toInt()
         val g = ((argb ushr 8) and 0xFFL).toInt()

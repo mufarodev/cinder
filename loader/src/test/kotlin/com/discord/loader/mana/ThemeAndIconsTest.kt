@@ -743,13 +743,11 @@ object ThemeAndIconsTest {
                 "background" to colorVal(bg),
             ),
         )
-        // A saturated green view with the search box's shape must NOT become INPUT_BG
         ThemeEngine.observeBatch(box(60, 0xFF008545L).ops(), applyReskin = false)
         checkCond(
             ThemeEngine.color(ColorToken.INPUT_BG) != 0xFF008545L,
             "saturated green rejected as INPUT_BG",
         )
-        // A neutral dark input background is still accepted
         ThemeEngine.observeBatch(box(61, 0xFF1E1F22L).ops(), applyReskin = false)
         checkEq(ThemeEngine.color(ColorToken.INPUT_BG), 0xFF1E1F22L, "neutral input bg scraped")
     }

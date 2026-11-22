@@ -18,16 +18,8 @@ import java.nio.ByteOrder
 import java.nio.charset.StandardCharsets
 
 /**
- * Rewrites outgoing chat messages: before a message is sent (or edited), every rule
- * `find => replace` is applied, in order, to its text.
- *
- * Hooks `Networking.request` for `POST /channels/{id}/messages` and
- * `PATCH /channels/{id}/messages/{id}`. The JSON body travels in the frame's trailing bytes, so
- * only the top-level `"content"` string is edited in place and every other byte is preserved.
- * Fail-soft: any surprise returns `null` and the original frame goes through untouched.
- *
- * ponytail: literal, case-sensitive, applied sequentially (a rule sees earlier rules' output).
- * Add regex / ignore-case / whole-word flags if literal matching proves too blunt.
+ * Applies `find => replace` rules to outgoing messages. The request body is the host call's
+ * trailing bytes, so only the top-level JSON `"content"` string is rewritten.
  */
 class TextReplacePlugin : ModPlugin {
     class Rule(val find: String, val replace: String)
@@ -41,7 +33,6 @@ class TextReplacePlugin : ModPlugin {
 
         private val SEND_URL = Regex("""https?://[^/]+(/api(/v\d+)?)?/channels/\d+/messages(/\d+)?(\?.*)?""")
 
-        /** One rule per line: `find => replace`. Lines without `=>` or with an empty find are skipped. */
         fun parseRules(text: String): List<Rule> {
             val out = ArrayList<Rule>()
             for (line in text.split('\n')) {
@@ -60,10 +51,6 @@ class TextReplacePlugin : ModPlugin {
             return s
         }
 
-        /**
-         * Returns [body] with its top-level `"content"` string run through [rules], or `null` if
-         * there is no such string or no rule changed it.
-         */
         internal fun rewriteJsonContent(body: String, rules: List<Rule>): String? {
             var depth = 0
             var i = 0
@@ -78,7 +65,7 @@ class TextReplacePlugin : ModPlugin {
                             var j = skipWs(body, end)
                             if (j >= body.length || body[j] != ':') { i = end; continue }
                             j = skipWs(body, j + 1)
-                            if (j >= body.length || body[j] != '"') return null // null / non-string content
+                            if (j >= body.length || body[j] != '"') return null
                             val valEnd = stringEnd(body, j)
                             if (valEnd < 0) return null
                             val old = unescape(body.substring(j + 1, valEnd - 1)) ?: return null
@@ -94,7 +81,6 @@ class TextReplacePlugin : ModPlugin {
             return null
         }
 
-        /** Index just past the closing quote of the JSON string starting at [start], or -1. */
         private fun stringEnd(s: String, start: Int): Int {
             var i = start + 1
             while (i < s.length) {
@@ -113,7 +99,6 @@ class TextReplacePlugin : ModPlugin {
             return i
         }
 
-        /** Decodes JSON string escapes (UTF-16 `\uXXXX` pairs combine naturally); null if malformed. */
         private fun unescape(s: String): String? {
             val sb = StringBuilder(s.length)
             var i = 0
@@ -139,7 +124,6 @@ class TextReplacePlugin : ModPlugin {
             return sb.toString()
         }
 
-        /** Encodes [s] as a quoted JSON string. */
         private fun quote(s: String): String {
             val sb = StringBuilder(s.length + 2).append('"')
             for (c in s) {
@@ -156,10 +140,7 @@ class TextReplacePlugin : ModPlugin {
             return sb.append('"').toString()
         }
 
-        /**
-         * Extracts the `url` string from a `Networking.request` Record payload: finds an
-         * `http(s)://` run and trusts the i32 LE byte length that precedes every Record string.
-         */
+        /** Record strings carry an i32 LE byte length, which delimits the URL. */
         internal fun requestUrl(payload: ByteArray): String? {
             val bb = ByteBuffer.wrap(payload).order(ByteOrder.LITTLE_ENDIAN)
             for (i in 4..payload.size - 7) {
@@ -203,7 +184,7 @@ class TextReplacePlugin : ModPlugin {
         setRulesText(prefs?.getString(PREF_RULES, "") ?: "", persist = false)
     }
 
-    /** Swaps in a new immutable rule list (called from the UI thread; read on `wasm-guest`). */
+    // Written from the UI thread, read on wasm-guest: swap the whole list.
     fun setRulesText(text: String, persist: Boolean = true) {
         rulesText = text
         rules = parseRules(text)

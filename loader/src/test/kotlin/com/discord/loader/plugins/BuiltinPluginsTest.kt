@@ -393,18 +393,15 @@ object BuiltinPluginsTest {
         fun bodyOf(f: Frame?) = String(f!!.trailing(), StandardCharsets.UTF_8)
         val url = "https://discord.com/api/v9/channels/123456/messages"
 
-        // parsing: skips junk/empty-find lines, trims, allows empty replacement
         val parsed = TextReplacePlugin.parseRules("teh => the\nnonsense\n => x\nrm =>\n")
         checkEq(parsed.map { it.find + "|" + it.replace }, listOf("teh|the", "rm|"), "rule parsing")
 
-        // no rules -> untouched
         val orig = "{\"content\":\"teh cat\"}"
         checkEq(bodyOf(send(url, orig)), orig, "no rules: pass-through")
 
         plugin.setRulesText("teh => the\nthe cat => the dog")
         checkEq(bodyOf(send(url, orig)), "{\"content\":\"the dog\"}", "rules applied sequentially")
 
-        // escapes: quote, newline, emoji (surrogate pair escape + raw), other fields untouched
         val body = "{\"mobile_network_type\":\"teh\",\"content\":\"teh \\\"q\\\"\\n\\ud83d\\ude00 \ud83d\ude00\",\"nonce\":\"1\",\"flags\":0}"
         val out = bodyOf(send(url, body))
         checkEq(
@@ -413,16 +410,13 @@ object BuiltinPluginsTest {
             "escapes round-trip; nested/other fields untouched ($out)",
         )
 
-        // content nested deeper is not top-level -> ignored
         val nested = "{\"embed\":{\"content\":\"teh\"}}"
         checkEq(bodyOf(send(url, nested)), nested, "nested content ignored")
 
-        // edits (PATCH path) are rewritten; ack / reactions / other hosts are not
         checkEq(bodyOf(send("$url/987654", orig)), "{\"content\":\"the dog\"}", "edit path rewritten")
         checkEq(bodyOf(send("$url/987654/ack", orig)), orig, "ack path untouched")
         checkEq(bodyOf(send("https://discord.com/api/v9/channels/1/threads", orig)), orig, "non-message path untouched")
 
-        // malformed body -> pass-through, no throw
         checkEq(bodyOf(send(url, "{\"content\":\"teh")), "{\"content\":\"teh", "unterminated string pass-through")
         checkEq(bodyOf(send(url, "{\"content\":null}")), "{\"content\":null}", "null content pass-through")
     }
