@@ -66,6 +66,7 @@ public final class Loader {
     "com.discord.loader.plugins.CinderDiagnosticsPlugin",
     "com.discord.loader.plugins.StaffDevToolsPlugin",
     "com.discord.loader.plugins.NoTelemetryPlugin",
+    "com.discord.loader.plugins.MessageLoggerPlugin",
   };
 
   private Loader() {}

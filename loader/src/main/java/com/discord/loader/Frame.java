@@ -112,6 +112,33 @@ public final class Frame {
     return out;
   }
 
+  public byte[] trailing() {
+    int trailing = trailingLength();
+    if (trailing <= 0) return new byte[0];
+    byte[] out = new byte[trailing];
+    System.arraycopy(raw, HEADER_SIZE + payloadLength, out, 0, trailing);
+    return out;
+  }
+
+  public byte[] withTrailing(byte[] newTrailing) {
+    return withPayloadAndTrailing(payload(), newTrailing);
+  }
+
+  public byte[] withPayloadAndTrailing(byte[] newPayload, byte[] newTrailing) {
+    int newLen = newPayload != null ? newPayload.length : 0;
+    int newTrailingLen = newTrailing != null ? newTrailing.length : 0;
+    byte[] out = new byte[HEADER_SIZE + newLen + newTrailingLen];
+    System.arraycopy(raw, 0, out, 0, HEADER_SIZE);
+    ByteBuffer.wrap(out).order(ByteOrder.LITTLE_ENDIAN).putInt(12, newLen);
+    if (newLen > 0) {
+      System.arraycopy(newPayload, 0, out, HEADER_SIZE, newLen);
+    }
+    if (newTrailingLen > 0) {
+      System.arraycopy(newTrailing, 0, out, HEADER_SIZE + newLen, newTrailingLen);
+    }
+    return out;
+  }
+
   public byte[] withPayload(byte[] newPayload) {
     int newLen = newPayload != null ? newPayload.length : 0;
     int trailing = trailingLength();

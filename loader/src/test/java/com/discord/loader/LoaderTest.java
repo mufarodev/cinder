@@ -79,6 +79,22 @@ public final class LoaderTest {
     Frame ft = Frame.parse(withTrailing);
     check(ft != null, "parsed frame with trailing bytes");
     checkEq(ft.trailingLength(), 3, "trailingLength=3");
+    checkBytes(ft.trailing(), new byte[]{(byte) 0xDE, (byte) 0xAD, (byte) 0xBE}, "trailing()");
+    checkBytes(f.trailing(), new byte[0], "trailing() empty when absent");
+
+    byte[] replacedTrailing = ft.withTrailing(new byte[]{1, 2, 3, 4});
+    Frame rt = Frame.parse(replacedTrailing);
+    check(rt != null, "withTrailing frame parses");
+    checkEq(rt.payloadLength(), 5, "withTrailing preserves payload length");
+    checkEq(rt.trailingLength(), 4, "withTrailing replaces trailing length");
+    checkBytes(rt.trailing(), new byte[]{1, 2, 3, 4}, "withTrailing bytes");
+    checkEq(rt.raw()[1], (byte) 0x5A, "withTrailing preserves flags byte");
+
+    byte[] both = f.withPayloadAndTrailing("abc".getBytes(StandardCharsets.UTF_8), new byte[]{9, 8});
+    Frame bt = Frame.parse(both);
+    check(bt != null, "withPayloadAndTrailing frame parses");
+    checkBytes(bt.payload(), "abc".getBytes(StandardCharsets.UTF_8), "withPayloadAndTrailing payload");
+    checkBytes(bt.trailing(), new byte[]{9, 8}, "withPayloadAndTrailing trailing");
 
     byte[] mutated = ft.withPayload("longer-payload!".getBytes(StandardCharsets.UTF_8));
     Frame fm = Frame.parse(mutated);
@@ -122,10 +138,11 @@ public final class LoaderTest {
     table[60] = "Updates";
     table[241] = "Updates.developerMode";
     table[294] = "@access";
+    table[295] = "@ws";
 
     BridgeRegistry.register(table);
     check(BridgeRegistry.isReady(), "ready after register");
-    checkEq(BridgeRegistry.size(), 5, "5 non-empty symbols");
+    checkEq(BridgeRegistry.size(), 6, "6 non-empty symbols");
     checkEq(BridgeRegistry.moduleId("Updates"), 60, "Updates=60");
     checkEq(BridgeRegistry.methodId("Updates", "developerMode"), 241, "Updates.developerMode=241");
     checkEq(BridgeRegistry.nameOf(241), "Updates.developerMode", "nameOf(241)");
@@ -138,6 +155,12 @@ public final class LoaderTest {
     check(BridgeRegistry.matches(f, "Updates", "developerMode"), "matches");
     check(!BridgeRegistry.matches(f, "Database", "developerMode"), "!matches wrong module");
     checkEq(BridgeRegistry.describe(f), "Updates.developerMode", "describe resolved");
+
+    Frame event = Frame.parse(Frame.build(Frame.KIND_EVENT, 0, 295, 0, null));
+    check(event.isEvent(), "event frame isEvent");
+    check(BridgeRegistry.matchesEvent(event, "@ws"), "matchesEvent @ws");
+    check(!BridgeRegistry.matchesEvent(event, "@http"), "matchesEvent rejects other topic");
+    check(!BridgeRegistry.matchesEvent(f, "@ws"), "matchesEvent rejects non-event frame");
 
     Frame unknown = Frame.parse(Frame.build(Frame.KIND_REQUEST, 999, 888, 1, null));
     checkEq(BridgeRegistry.describe(unknown), "m999.888", "describe unresolved");

@@ -157,6 +157,12 @@ public final class BridgeRegistry {
     return methId >= 0 && frame.methodId() == methId;
   }
 
+  public static boolean matchesEvent(Frame frame, String topicName) {
+    if (frame == null || !frame.isEvent()) return false;
+    int id = idOf(topicName);
+    return id >= 0 && frame.methodId() == id;
+  }
+
   public static String describe(Frame frame) {
     if (frame == null) return "null";
     String meth = nameOf(frame.methodId());

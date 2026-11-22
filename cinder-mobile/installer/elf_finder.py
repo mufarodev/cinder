@@ -54,8 +54,11 @@ INSN_MOV_W0_1 = 0x52800020
 INSN_MOV_W0_2 = 0x52800040
 INSN_CSET_W0_EQ = 0x1A9F17E0
 INSN_RET = 0xD65F03C0
+INSN_NOP = 0xD503201F
+INSN_TST_W0_FF = 0x72001C1F
 
 BYTES_MOV_W0_1 = struct.pack("<I", INSN_MOV_W0_1)
+BYTES_NOP = struct.pack("<I", INSN_NOP)
 BYTES_MOV_W0_2 = struct.pack("<I", INSN_MOV_W0_2)
 BYTES_CSET_W0_EQ = struct.pack("<I", INSN_CSET_W0_EQ)
 BYTES_MOV_W0_1_RET = struct.pack("<II", INSN_MOV_W0_1, INSN_RET)
@@ -1114,6 +1117,70 @@ def find_release_access(
                 detail=f"helper {fn_start:#x}..{fn_end:#x} (xref {xref_pc:#x})",
             )
         )
+
+    if not matches:
+        for (fn_start, fn_end), xref_pc in sorted(fn_xrefs.items()):
+            if xref_pc - fn_start < 16:
+                continue
+            pre_len = xref_pc - fn_start
+            off = elf.vaddr_to_file_offset(fn_start, pre_len)
+            if off is None:
+                continue
+            pre_n = pre_len // 4
+            pre_words = [struct.unpack_from("<I", elf.view, off + i * 4)[0] for i in range(pre_n)]
+            for i in range(pre_n - 4):
+                if pre_words[i] != INSN_TST_W0_FF:
+                    continue
+                branch_pc = fn_start + (i + 1) * 4
+                bw = pre_words[i + 1]
+                mw = pre_words[i + 2]
+                if (mw & 0xFFFFFFE0) != 0x52800040:
+                    continue
+                rd = mw & 0x1F
+                has_strb = any(
+                    (pre_words[j] & 0xFFFFFC1F) == (0x39000000 | rd)
+                    for j in range(i + 3, min(pre_n, i + 6))
+                )
+                if not has_strb:
+                    continue
+                is_beq_to_xref = False
+                if (bw & 0xFF00001F) == 0x54000000:
+                    imm19 = (bw >> 5) & 0x7FFFF
+                    if imm19 & 0x40000:
+                        imm19 -= 0x80000
+                    if branch_pc + (imm19 << 2) == xref_pc:
+                        is_beq_to_xref = True
+                if is_beq_to_xref:
+                    status = "VANILLA"
+                    orig_bytes = struct.pack("<I", bw)
+                elif allow_already_patched and bw == INSN_NOP:
+                    status = "ARMED"
+                    delta = (xref_pc - branch_pc) >> 2
+                    orig_bytes = struct.pack("<I", 0x54000000 | ((delta & 0x7FFFF) << 5))
+                else:
+                    continue
+                b_off = elf.vaddr_to_file_offset(branch_pc, 4)
+                if b_off is None:
+                    continue
+                e = PatchEdit(
+                    tag="experiment.release_access.1",
+                    file_offset=b_off,
+                    vaddr=branch_pc,
+                    orig=orig_bytes,
+                    patched=BYTES_NOP,
+                    status=status,
+                    detail=f"fn={fn_start:#x}..{fn_end:#x} (b.eq {xref_pc:#x} -> nop; always return tag=2 Allowed)",
+                )
+                matches.append(
+                    PatchResolution(
+                        name="experiment.release_access",
+                        fn_start=fn_start,
+                        fn_end=fn_end,
+                        edits=(e,),
+                        detail=f"access_gate v2 {fn_start:#x}..{fn_end:#x} (xref {xref_pc:#x})",
+                    )
+                )
+                break
 
     if len(matches) != 1:
         raise FinderError(
