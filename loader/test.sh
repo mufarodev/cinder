@@ -98,6 +98,7 @@ if [[ ${#TEST_KT[@]} -gt 0 ]]; then
   java -cp "$TEST_CP" com.discord.loader.mana.ManaWidgetsAndRegistryTest
   java -cp "$TEST_CP" com.discord.loader.plugins.BuiltinPluginsTest
   java -cp "$TEST_CP" com.discord.loader.plugins.MessageLoggerPluginTest
+  java -cp "$TEST_CP" com.discord.loader.plugins.MentionAvatarsPluginTest
 fi
 
 if [[ ${#MAIN_KT[@]} -gt 0 || ${#TEST_KT[@]} -gt 0 ]]; then
@@ -116,6 +117,7 @@ if [[ ${#MAIN_KT[@]} -gt 0 || ${#TEST_KT[@]} -gt 0 ]]; then
   java -cp "$SHADED_CP" com.discord.loader.mana.ManaWidgetsAndRegistryTest
   java -cp "$SHADED_CP" com.discord.loader.plugins.BuiltinPluginsTest
   java -cp "$SHADED_CP" com.discord.loader.plugins.MessageLoggerPluginTest
+  java -cp "$SHADED_CP" com.discord.loader.plugins.MentionAvatarsPluginTest
 fi
 
 echo "== All mobile/loader Java + Kotlin tests passed =="
