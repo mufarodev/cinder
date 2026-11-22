@@ -393,13 +393,29 @@ object BuiltinPluginsTest {
         fun bodyOf(f: Frame?) = String(f!!.trailing(), StandardCharsets.UTF_8)
         val url = "https://discord.com/api/v9/channels/123456/messages"
 
-        val parsed = TextReplacePlugin.parseRules("teh => the\nnonsense\n => x\nrm =>\n")
-        checkEq(parsed.map { it.find + "|" + it.replace }, listOf("teh|the", "rm|"), "rule parsing")
+        val saved = listOf(
+            TextReplacePlugin.Rule("teh", "the"),
+            TextReplacePlugin.Rule("a => b\nc", "multi\nline"),
+            TextReplacePlugin.Rule("", "dropped: empty find"),
+            TextReplacePlugin.Rule("rm", ""),
+        )
+        checkEq(
+            TextReplacePlugin.decodeRules(TextReplacePlugin.encodeRules(saved)),
+            listOf(saved[0], saved[1], saved[3]),
+            "rules round-trip through storage, empty find dropped",
+        )
+        checkEq(TextReplacePlugin.decodeRules(""), emptyList<TextReplacePlugin.Rule>(), "empty storage")
 
         val orig = "{\"content\":\"teh cat\"}"
         checkEq(bodyOf(send(url, orig)), orig, "no rules: pass-through")
 
-        plugin.setRulesText("teh => the\nthe cat => the dog")
+        plugin.setRules(
+            listOf(
+                TextReplacePlugin.Rule("teh", "the"),
+                TextReplacePlugin.Rule("", "blank row must not match"),
+                TextReplacePlugin.Rule("the cat", "the dog"),
+            ),
+        )
         checkEq(bodyOf(send(url, orig)), "{\"content\":\"the dog\"}", "rules applied sequentially")
 
         val body = "{\"mobile_network_type\":\"teh\",\"content\":\"teh \\\"q\\\"\\n\\ud83d\\ude00 \ud83d\ude00\",\"nonce\":\"1\",\"flags\":0}"

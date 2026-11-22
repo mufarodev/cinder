@@ -820,6 +820,53 @@ open class ManaSectionBuilder internal constructor(
         )
     }
 
+    /**
+     * A column of rows rebuilt from [items] whenever the list changes. [row] creates one row's
+     * views into the batch and returns its root view id; allocate every view id with
+     * `scope.nextId()` so the old rows can be deleted on the next rebuild.
+     */
+    fun <T> dynamicRows(
+        items: ManaState<List<T>>,
+        gap: Int = 12,
+        row: (batch: UiOps, theme: ManaUi.Theme, palette: ManaPalette, index: Int, item: T) -> Int,
+    ) {
+        entries.add(Entry.Block { batch, theme, pal ->
+            val containerId = scope.nextId()
+            var owned = IntArray(0)
+
+            fun build(ops: UiOps, t: ManaUi.Theme, p: ManaPalette, list: List<T>): IntArray {
+                val before = scope.viewIds().toHashSet()
+                val roots = IntArray(list.size) { i -> row(ops, t, p, i, list[i]) }
+                owned = scope.viewIds().filter { it !in before }.toIntArray()
+                return roots
+            }
+
+            batch.createView(
+                containerId,
+                "view",
+                ManaUi.props(
+                    ManaUi.prop("direction", UiOps.Value.ofString("column")),
+                    ManaUi.prop("width", UiOps.Value.ofString("fill")),
+                    ManaUi.prop("gap", UiOps.Value.ofInt(gap)),
+                ),
+            )
+            batch.setChildren(containerId, *build(batch, theme, pal, items.value))
+
+            items.observe(scope) { list ->
+                val old = owned
+                scope.untrackViewIds(old)
+                scope.emitPatch { ops ->
+                    scope.withThemeScope {
+                        val roots = build(ops, ThemeEngine.currentTheme(), ThemeEngine.currentPalette(), list)
+                        ops.setChildren(containerId, *roots)
+                        if (old.isNotEmpty()) ops.deleteViews(*old)
+                    }
+                }
+            }
+            containerId
+        })
+    }
+
     fun callout(
         text: String,
         title: String? = null,

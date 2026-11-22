@@ -8,6 +8,7 @@ import com.discord.loader.ManaUi
 import com.discord.loader.ModPlugin
 import com.discord.loader.UiOps
 import com.discord.loader.plugins.CinderDiagnosticsPlugin
+import com.discord.loader.plugins.TextReplacePlugin
 import java.util.Arrays
 import java.util.concurrent.Executor
 import java.util.concurrent.atomic.AtomicBoolean
@@ -1001,12 +1002,77 @@ object ManaWidgetsAndRegistryTest {
         checkEq(ThemeEngine.bindingCount(scopeId), 0, "0 leaked showcase theme bindings")
     }
 
+    private fun testDynamicRowsRebuildOnStateChange() {
+        val host = installSyncHost()
+        val router = ManaRouter()
+        router.attachNavigator(5, intArrayOf(6, 997, 4244), 2)
+
+        val items = listState(listOf("a", "b"))
+        router.push(
+            manaPage(title = "Dynamic", scopeId = "test-dynamic") {
+                section(title = "List") {
+                    dynamicRows(items) { batch, _, _, index, item ->
+                        val id = scope.nextId()
+                        batch.createView(id, "text", ManaUi.props(ManaUi.prop("text", UiOps.Value.ofString("$index:$item"))))
+                        id
+                    }
+                }
+            },
+        )
+        fun texts(b: UiOps) = b.ops().filter { it.opcode() == UiOps.OP_CREATE && it.viewType() == "text" }.map { it.propString("text") }
+        checkEq(texts(host.batches.last()).filter { it!!.contains(":") }, listOf("0:a", "1:b"), "initial rows emitted")
+
+        items.value = listOf("a", "b", "c")
+        val grown = host.batches.last()
+        checkEq(texts(grown), listOf("0:a", "1:b", "2:c"), "all rows rebuilt with new indices")
+        checkCond(grown.ops().any { it.opcode() == UiOps.OP_DELETE }, "previous rows deleted")
+        checkCond(grown.ops().any { it.opcode() == UiOps.OP_CHILDREN && it.childIds().size == 3 }, "container re-parented to 3 rows")
+
+        items.value = emptyList()
+        val emptied = host.batches.last()
+        checkCond(emptied.ops().any { it.opcode() == UiOps.OP_CHILDREN && it.childIds().isEmpty() }, "container emptied")
+        checkEq(texts(emptied), emptyList<String?>(), "no rows created when empty")
+    }
+
+    private fun testTextReplaceSettingsAddEditRemoveRows() {
+        val host = installSyncHost()
+        val router = ManaRouter()
+        router.attachNavigator(5, intArrayOf(6, 997, 4244), 2)
+        val plugin = TextReplacePlugin()
+        Loader.setPluginsForTests(plugin)
+        plugin.onLoad(null)
+
+        val mounted = router.push(plugin.createSettingsPage(ManaContext(router, ManaScope())))
+        fun idOf(a11y: String): Int? = host.batches.asReversed().firstNotNullOfOrNull { b ->
+            b.ops().lastOrNull { it.opcode() == UiOps.OP_CREATE && it.propString("accessibilityId") == a11y }?.viewId()
+        }
+        checkCond(idOf("text-replace.find.0") != null && idOf("text-replace.with.0") != null, "a blank rule row is shown initially")
+        checkEq(idOf("text-replace.find.1"), null, "only one row initially")
+
+        router.onViewEvent(pressEvent(mounted.ref<Int>("text-replace.add")!!))
+        checkCond(idOf("text-replace.find.1") != null, "Add rule creates a second row")
+        checkEq(plugin.currentRules.size, 2, "plugin holds two rows")
+
+        router.onViewEvent(changeTextEvent(idOf("text-replace.find.1")!!, "teh"))
+        router.onViewEvent(changeTextEvent(idOf("text-replace.with.1")!!, "the"))
+        checkEq(plugin.currentRules[1], TextReplacePlugin.Rule("teh", "the"), "typing updates that row's rule")
+        checkEq(plugin.currentRules[0], TextReplacePlugin.Rule(), "other row untouched")
+
+        router.onViewEvent(pressEvent(idOf("text-replace.remove.0")!!))
+        checkEq(plugin.currentRules, listOf(TextReplacePlugin.Rule("teh", "the")), "Remove drops that row, keeps the other's text")
+        val rebuilt = host.batches.last()
+        val findInput = rebuilt.ops().last { it.opcode() == UiOps.OP_CREATE && it.propString("accessibilityId") == "text-replace.find.0" }
+        checkEq(findInput.propString("value"), "teh", "surviving row rebuilt with its saved text")
+    }
+
     @JvmStatic
     fun main(args: Array<String>) {
         runTest("checkboxRowNativeMotionAndThemeReskin") { testCheckboxRowNativeMotionAndThemeReskin() }
         runTest("sliderRowNativeViewWireSeekBarAndReactivity") { testSliderRowNativeViewWireSeekBarAndReactivity() }
         runTest("textInputTwoWayBindingValidationErrorClearAndMultiline") { testTextInputTwoWayBindingValidationErrorClearAndMultiline() }
         runTest("calloutTonesAvatarVariantsActionSheetAndButtonStyles") { testCalloutTonesAvatarVariantsActionSheetAndButtonStyles() }
+        runTest("dynamicRowsRebuildOnStateChange") { testDynamicRowsRebuildOnStateChange() }
+        runTest("textReplaceSettingsAddEditRemoveRows") { testTextReplaceSettingsAddEditRemoveRows() }
         runTest(
             "pluginSettingsRegistryAutoDiscoveryAndDiagnosticsKotlinDsl",
         ) { testPluginSettingsRegistryAutoDiscoveryAndDiagnosticsKotlinDsl() }
