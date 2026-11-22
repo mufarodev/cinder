@@ -1,0 +1,119 @@
+/*
+ * Mana Design System — base reset + typography defaults.
+ * Import order: reset.css → tokens.css → mana.css (the ./mana barrel does this).
+ */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+}
+
+:root {
+	/* 'gg sans' (weights 400-800) ships with the design system, embedded in fonts.css —
+   * no font network fetches. The rest of the stack is the fallback while the
+   * embedded faces parse (font-display: swap). */
+	--font-primary:
+		"gg sans", "Noto Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial,
+		sans-serif;
+	--font-display: var(--font-primary);
+	--font-headline: var(--font-primary);
+	--font-code: "gg mono", ui-monospace, "SF Mono", "Cascadia Mono", Consolas, monospace;
+
+	/* Design-system z-index scale (portalled floating layers). */
+	--mana-z-modal: 1000;
+	--mana-z-popout: 1010;
+	--mana-z-tooltip: 1020;
+
+	--motion-duration-quick: 150ms;
+	--motion-duration-fast: 250ms;
+	--motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+
+body {
+	font-family: var(--font-primary);
+	font-size: 16px;
+	line-height: 1.375;
+	color: var(--text-default);
+	/* The Frame sits inside Discord's chrome, so its canvas is the CHAT surface — the same declaration
+     the host's message area uses, gradient token and solid fallback together, so a custom client
+     theme carries into the app exactly as it does into chat. `base-lowest` is the channel list and
+     `base-low` is the panel behind the Frame; either one reads as more Discord chrome. */
+	background: var(--background-gradient-chat, var(--background-base-lower));
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Themed scrollbars everywhere, not just inside Scroller. An app-owned overflow container with a
+   plain `overflow: auto` otherwise renders the platform's own scrollbar — a light, chunky bar with
+   stepper arrows over a dark app. `Scroller` still adds gutter stability and the fade/size variants;
+   this is the floor so nothing can look foreign by omission. */
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--scrollbar-thin-thumb) var(--scrollbar-thin-track);
+}
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: var(--scrollbar-thin-track);
+}
+
+::-webkit-scrollbar-thumb {
+	background-clip: padding-box;
+	background-color: var(--scrollbar-thin-thumb);
+	border: 2px solid transparent;
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-button {
+	display: none;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+	color: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+a {
+	color: var(--text-link);
+}
+
+/* Shared focus ring (port of Mana's focus-rings.css intent). */
+:focus-visible {
+	outline: 2px solid var(--border-focus);
+	outline-offset: 2px;
+}

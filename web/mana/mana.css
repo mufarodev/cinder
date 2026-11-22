@@ -1,0 +1,4835 @@
+/*
+ * Mana Design System — component + typography styles.
+ * Plain global classes (.mana-*), variants via data attributes, tokens from tokens.css.
+ * Sections: base utilities, typography, then one section per component group.
+ */
+
+/* ===== base utilities ===== */
+
+.mana-visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* ===== typography (generated from Mana TextVariants) ===== */
+
+.mana-heading-sm-normal {
+	font-family: var(--font-display);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 400;
+}
+
+.mana-heading-sm-medium {
+	font-family: var(--font-display);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 500;
+}
+
+.mana-heading-sm-semibold {
+	font-family: var(--font-display);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 600;
+}
+
+.mana-heading-sm-bold {
+	font-family: var(--font-display);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 700;
+}
+
+.mana-heading-sm-extrabold {
+	font-family: var(--font-display);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 800;
+}
+
+.mana-heading-md-normal {
+	font-family: var(--font-display);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 400;
+}
+
+.mana-heading-md-medium {
+	font-family: var(--font-display);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 500;
+}
+
+.mana-heading-md-semibold {
+	font-family: var(--font-display);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 600;
+}
+
+.mana-heading-md-bold {
+	font-family: var(--font-display);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 700;
+}
+
+.mana-heading-md-extrabold {
+	font-family: var(--font-display);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 800;
+}
+
+.mana-heading-lg-normal {
+	font-family: var(--font-display);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 400;
+}
+
+.mana-heading-lg-medium {
+	font-family: var(--font-display);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 500;
+}
+
+.mana-heading-lg-semibold {
+	font-family: var(--font-display);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 600;
+}
+
+.mana-heading-lg-bold {
+	font-family: var(--font-display);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 700;
+}
+
+.mana-heading-lg-extrabold {
+	font-family: var(--font-display);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 800;
+}
+
+.mana-heading-xl-normal {
+	font-family: var(--font-display);
+	font-size: 24px;
+	line-height: 1.25;
+	font-weight: 400;
+}
+
+.mana-heading-xl-medium {
+	font-family: var(--font-display);
+	font-size: 24px;
+	line-height: 1.25;
+	font-weight: 500;
+}
+
+.mana-heading-xl-semibold {
+	font-family: var(--font-display);
+	font-size: 24px;
+	line-height: 1.25;
+	font-weight: 600;
+}
+
+.mana-heading-xl-bold {
+	font-family: var(--font-display);
+	font-size: 24px;
+	line-height: 1.25;
+	font-weight: 700;
+}
+
+.mana-heading-xl-extrabold {
+	font-family: var(--font-display);
+	font-size: 24px;
+	line-height: 1.25;
+	font-weight: 800;
+}
+
+.mana-heading-xxl-normal {
+	font-family: var(--font-display);
+	font-size: 32px;
+	line-height: 1.25;
+	font-weight: 400;
+}
+
+.mana-heading-xxl-medium {
+	font-family: var(--font-display);
+	font-size: 32px;
+	line-height: 1.25;
+	font-weight: 500;
+}
+
+.mana-heading-xxl-semibold {
+	font-family: var(--font-display);
+	font-size: 32px;
+	line-height: 1.25;
+	font-weight: 600;
+}
+
+.mana-heading-xxl-bold {
+	font-family: var(--font-display);
+	font-size: 32px;
+	line-height: 1.25;
+	font-weight: 700;
+}
+
+.mana-heading-xxl-extrabold {
+	font-family: var(--font-display);
+	font-size: 32px;
+	line-height: 1.25;
+	font-weight: 800;
+}
+
+.mana-heading-deprecated-12-normal {
+	font-family: var(--font-display);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 400;
+}
+
+.mana-heading-deprecated-12-medium {
+	font-family: var(--font-display);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 500;
+}
+
+.mana-heading-deprecated-12-semibold {
+	font-family: var(--font-display);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 600;
+}
+
+.mana-heading-deprecated-12-bold {
+	font-family: var(--font-display);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 700;
+}
+
+.mana-heading-deprecated-12-extrabold {
+	font-family: var(--font-display);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 800;
+}
+
+.mana-text-xxs-normal {
+	font-family: var(--font-primary);
+	font-size: 10px;
+	line-height: 1.2;
+	font-weight: 400;
+}
+
+.mana-text-xxs-medium {
+	font-family: var(--font-primary);
+	font-size: 10px;
+	line-height: 1.2;
+	font-weight: 500;
+}
+
+.mana-text-xxs-semibold {
+	font-family: var(--font-primary);
+	font-size: 10px;
+	line-height: 1.2;
+	font-weight: 600;
+}
+
+.mana-text-xxs-bold {
+	font-family: var(--font-primary);
+	font-size: 10px;
+	line-height: 1.2;
+	font-weight: 700;
+}
+
+.mana-text-xs-normal {
+	font-family: var(--font-primary);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 400;
+}
+
+.mana-text-xs-medium {
+	font-family: var(--font-primary);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 500;
+}
+
+.mana-text-xs-semibold {
+	font-family: var(--font-primary);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 600;
+}
+
+.mana-text-xs-bold {
+	font-family: var(--font-primary);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 700;
+}
+
+.mana-text-sm-normal {
+	font-family: var(--font-primary);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 400;
+}
+
+.mana-text-sm-medium {
+	font-family: var(--font-primary);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 500;
+}
+
+.mana-text-sm-semibold {
+	font-family: var(--font-primary);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 600;
+}
+
+.mana-text-sm-bold {
+	font-family: var(--font-primary);
+	font-size: 14px;
+	line-height: 1.2857142857142858;
+	font-weight: 700;
+}
+
+.mana-text-md-normal {
+	font-family: var(--font-primary);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 400;
+}
+
+.mana-text-md-medium {
+	font-family: var(--font-primary);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 500;
+}
+
+.mana-text-md-semibold {
+	font-family: var(--font-primary);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 600;
+}
+
+.mana-text-md-bold {
+	font-family: var(--font-primary);
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: 700;
+}
+
+.mana-text-lg-normal {
+	font-family: var(--font-primary);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 400;
+}
+
+.mana-text-lg-medium {
+	font-family: var(--font-primary);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 500;
+}
+
+.mana-text-lg-semibold {
+	font-family: var(--font-primary);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 600;
+}
+
+.mana-text-lg-bold {
+	font-family: var(--font-primary);
+	font-size: 20px;
+	line-height: 1.2;
+	font-weight: 700;
+}
+
+.mana-experimental-display-xs {
+	font-family: var(--font-headline);
+	font-size: 16px;
+	line-height: 1.125;
+	font-weight: 800;
+}
+
+.mana-experimental-display-sm {
+	font-family: var(--font-headline);
+	font-size: 24px;
+	line-height: 1.0833333333333333;
+	font-weight: 800;
+}
+
+.mana-experimental-display-md {
+	font-family: var(--font-headline);
+	font-size: 32px;
+	line-height: 1.0625;
+	font-weight: 800;
+}
+
+.mana-experimental-display-lg {
+	font-family: var(--font-headline);
+	font-size: 44px;
+	line-height: 1;
+	font-weight: 800;
+}
+
+.mana-eyebrow {
+	font-family: var(--font-display);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+}
+
+.mana-display-sm {
+	font-family: var(--font-headline);
+	font-size: 20px;
+	line-height: 1;
+	font-weight: 800;
+}
+
+.mana-display-md {
+	font-family: var(--font-headline);
+	font-size: 34px;
+	line-height: 1.0588235294117647;
+	font-weight: 800;
+}
+
+.mana-display-lg {
+	font-family: var(--font-headline);
+	font-size: 44px;
+	line-height: 0.9545454545454546;
+	font-weight: 800;
+}
+
+.mana-code {
+	font-family: var(--font-code);
+	font-size: 12px;
+	line-height: 1.3333333333333333;
+	font-weight: 700;
+}
+
+/* ===== statics ===== */
+
+/* ============================================================================
+ * statics — Text/Heading, Stack, Anchor, Divider, Card, Badge, Chip, Spinner,
+ * ProgressBar/ProgressCircle, InlineNotice, Scroller
+ * ========================================================================== */
+
+/* ----- Text ----------------------------------------------------------------
+ * Typography variant classes (.mana-text-md-semibold etc.) are provided by the
+ * orchestrator; these are the behavioral modifiers used by <Text>.
+ */
+.mana-text-default-color {
+	color: var(--text-default);
+}
+
+.mana-text-selectable {
+	user-select: text;
+}
+
+.mana-text-tabular {
+	font-variant-numeric: tabular-nums;
+}
+
+.mana-text-clamp-1 {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
+}
+
+.mana-text-clamp-multi {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+}
+
+/* ----- Stack -------------------------------------------------------------- */
+.mana-stack {
+	display: flex;
+
+	&[data-full-width] {
+		width: 100%;
+	}
+
+	&[data-direction="vertical"] {
+		flex-direction: column;
+	}
+
+	&[data-direction="vertical-reverse"] {
+		flex-direction: column-reverse;
+	}
+
+	&[data-direction="horizontal"] {
+		flex-direction: row;
+	}
+
+	&[data-direction="horizontal-reverse"] {
+		flex-direction: row-reverse;
+	}
+
+	&[data-align="start"] {
+		align-items: flex-start;
+	}
+
+	&[data-align="end"] {
+		align-items: flex-end;
+	}
+
+	&[data-align="center"] {
+		align-items: center;
+	}
+
+	&[data-align="stretch"] {
+		align-items: stretch;
+	}
+
+	&[data-align="baseline"] {
+		align-items: baseline;
+	}
+
+	&[data-wrap] {
+		flex-wrap: wrap;
+	}
+
+	&[data-justify="start"] {
+		justify-content: flex-start;
+	}
+
+	&[data-justify="end"] {
+		justify-content: flex-end;
+	}
+
+	&[data-justify="center"] {
+		justify-content: center;
+	}
+
+	&[data-justify="space-around"] {
+		justify-content: space-around;
+	}
+
+	&[data-justify="space-between"] {
+		justify-content: space-between;
+	}
+}
+
+/* ----- Anchor ---------------------------------------------------------------
+ * Inline text link. Underlines on hover by default, always when the viewer's
+ * underline-links accessibility setting is bridged on, and always with the
+ * `.mana-anchor-underline` modifier (<Anchor underlineOnHover={false}>).
+ */
+.mana-anchor {
+	color: var(--text-link);
+	text-decoration: none;
+	border-radius: var(--radius-xs);
+	cursor: pointer;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&:focus-visible {
+		outline: 2px solid var(--border-focus);
+		outline-offset: 2px;
+	}
+}
+
+html[data-discord-underline-links="true"] .mana-anchor,
+.mana-anchor-underline {
+	text-decoration: underline;
+}
+
+/* ----- Divider ------------------------------------------------------------ */
+.mana-divider {
+	width: 100%;
+	height: 0;
+	margin: 0;
+	border: none;
+	border-top: 1px solid var(--border-subtle);
+}
+
+/* ----- Card ---------------------------------------------------------------- */
+.mana-card {
+	position: relative;
+	box-sizing: border-box;
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	background-color: transparent;
+	color: var(--text-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		& a:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&[data-type="primary"] {
+		background-color: var(--card-background-default);
+		border-color: var(--border-subtle);
+		color: var(--text-default);
+	}
+
+	&[data-type="danger"] {
+		background-color: var(--background-feedback-critical);
+		border-color: var(--border-feedback-critical);
+		color: var(--text-feedback-critical);
+	}
+
+	&[data-type="warning"] {
+		background-color: var(--background-feedback-warning);
+		border-color: var(--background-feedback-warning);
+		color: var(--text-feedback-warning);
+	}
+
+	&[data-type="success"] {
+		background-color: var(--background-feedback-positive);
+		border-color: var(--background-feedback-positive);
+		color: var(--text-feedback-positive);
+	}
+
+	&[data-type="brand"] {
+		background-color: var(--background-brand);
+		border-color: var(--background-brand);
+		color: var(--text-overlay-dark);
+	}
+
+	&[data-type="danger"],
+	&[data-type="warning"],
+	&[data-type="success"],
+	&[data-type="brand"] {
+		& a {
+			font-weight: var(--font-weight-bold);
+			color: var(--white);
+		}
+	}
+
+	&[data-outline] {
+		background-color: transparent;
+	}
+}
+
+/* ----- Badge ---------------------------------------------------------------- */
+.mana-badge {
+	align-self: center;
+	box-sizing: border-box;
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-4);
+	padding: 0 var(--space-8);
+	border-radius: var(--radius-round);
+	text-transform: uppercase;
+	text-align: center;
+	min-width: 0;
+	max-width: 100%;
+
+	& > :not(.mana-badge-label) {
+		flex-shrink: 0;
+	}
+
+	&[data-variant="default"] {
+		background-color: var(--badge-background-default);
+		color: var(--badge-text-default);
+	}
+
+	&[data-variant="brand"] {
+		background-color: var(--badge-background-brand);
+		color: var(--badge-text-brand);
+	}
+
+	&[data-variant="expressive"] {
+		background-color: var(--badge-expressive-background-default);
+		color: var(--badge-expressive-text-default);
+	}
+
+	&[data-variant="rarity-common"] {
+		background: var(--badge-common-background);
+		border: 1px solid var(--badge-common-border);
+		color: var(--badge-common-text);
+	}
+
+	/*
+   * rare/epic/mythic use a gradient ring drawn via a ::before overlay because
+   * the alpha background would leak through a border-image ring.
+   */
+	&[data-variant="rarity-rare"],
+	&[data-variant="rarity-epic"],
+	&[data-variant="rarity-mythic"] {
+		border: 1px solid transparent;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: -1px;
+			border-radius: inherit;
+			padding: 1px;
+			background: linear-gradient(-78deg, var(--mana-rarity-ring-start), var(--mana-rarity-ring-end));
+			mask:
+				linear-gradient(#fff 0 0) content-box,
+				linear-gradient(#fff 0 0);
+			mask-composite: exclude;
+			pointer-events: none;
+		}
+	}
+
+	&[data-variant="rarity-rare"] {
+		--mana-rarity-ring-start: var(--badge-rare-border-gradient-start);
+		--mana-rarity-ring-end: var(--badge-rare-border-gradient-end);
+		background: var(--badge-rare-background);
+		color: var(--badge-rare-text);
+	}
+
+	&[data-variant="rarity-epic"] {
+		--mana-rarity-ring-start: var(--badge-epic-border-gradient-start);
+		--mana-rarity-ring-end: var(--badge-epic-border-gradient-end);
+		background: var(--badge-epic-background);
+		color: var(--badge-epic-text);
+	}
+
+	&[data-variant="rarity-mythic"] {
+		--mana-rarity-ring-start: var(--badge-mythic-border-gradient-start);
+		--mana-rarity-ring-end: var(--badge-mythic-border-gradient-end);
+		background: var(--badge-mythic-background);
+		color: var(--badge-mythic-text);
+	}
+}
+
+.mana-badge-label {
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mana-number-badge {
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 16px;
+	min-width: 16px;
+	min-height: 16px;
+	color: var(--white);
+	text-align: center;
+	text-transform: uppercase;
+	flex: 0 0 auto;
+
+	&[data-shape="round"] {
+		border-radius: var(--radius-round);
+	}
+
+	&[data-shape="round-left"] {
+		border-radius: var(--radius-xs) 0 0 var(--radius-xs);
+	}
+
+	&[data-shape="round-right"] {
+		border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+	}
+}
+
+/* ----- Chip ----------------------------------------------------------------- */
+.mana-chip {
+	align-self: center;
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-4);
+	padding: 0 var(--space-8);
+	border-radius: var(--radius-round);
+	text-transform: uppercase;
+	text-align: center;
+
+	&[data-variant="blurple-light"] {
+		background-color: var(--chip-blurple-light-background);
+		color: var(--chip-blurple-light-text);
+	}
+
+	&[data-variant="blurple-medium"] {
+		background-color: var(--chip-blurple-medium-background);
+		color: var(--chip-blurple-medium-text);
+	}
+
+	&[data-variant="blurple-dark"] {
+		background-color: var(--chip-blurple-dark-background);
+		color: var(--chip-blurple-dark-text);
+	}
+
+	&[data-variant="purple-light"] {
+		background-color: var(--chip-purple-light-background);
+		color: var(--chip-purple-light-text);
+	}
+
+	&[data-variant="purple-medium"] {
+		background-color: var(--chip-purple-medium-background);
+		color: var(--chip-purple-medium-text);
+	}
+
+	&[data-variant="purple-dark"] {
+		background-color: var(--chip-purple-dark-background);
+		color: var(--chip-purple-dark-text);
+	}
+
+	&[data-variant="green-light"] {
+		background-color: var(--chip-green-light-background);
+		color: var(--chip-green-light-text);
+	}
+
+	&[data-variant="green-medium"] {
+		background-color: var(--chip-green-medium-background);
+		color: var(--chip-green-medium-text);
+	}
+
+	&[data-variant="green-dark"] {
+		background-color: var(--chip-green-dark-background);
+		color: var(--chip-green-dark-text);
+	}
+
+	&[data-variant="orange-light"] {
+		background-color: var(--chip-orange-light-background);
+		color: var(--chip-orange-light-text);
+	}
+
+	&[data-variant="orange-medium"] {
+		background-color: var(--chip-orange-medium-background);
+		color: var(--chip-orange-medium-text);
+	}
+
+	&[data-variant="orange-dark"] {
+		background-color: var(--chip-orange-dark-background);
+		color: var(--chip-orange-dark-text);
+	}
+
+	&[data-variant="yellow-light"] {
+		background-color: var(--chip-yellow-light-background);
+		color: var(--chip-yellow-light-text);
+	}
+
+	&[data-variant="yellow-medium"] {
+		background-color: var(--chip-yellow-medium-background);
+		color: var(--chip-yellow-medium-text);
+	}
+
+	&[data-variant="yellow-dark"] {
+		background-color: var(--chip-yellow-dark-background);
+		color: var(--chip-yellow-dark-text);
+	}
+
+	&[data-variant="pink-light"] {
+		background-color: var(--chip-pink-light-background);
+		color: var(--chip-pink-light-text);
+	}
+
+	&[data-variant="pink-medium"] {
+		background-color: var(--chip-pink-medium-background);
+		color: var(--chip-pink-medium-text);
+	}
+
+	&[data-variant="pink-dark"] {
+		background-color: var(--chip-pink-dark-background);
+		color: var(--chip-pink-dark-text);
+	}
+
+	&[data-variant="red-light"] {
+		background-color: var(--chip-red-light-background);
+		color: var(--chip-red-light-text);
+	}
+
+	&[data-variant="red-medium"] {
+		background-color: var(--chip-red-medium-background);
+		color: var(--chip-red-medium-text);
+	}
+
+	&[data-variant="red-dark"] {
+		background-color: var(--chip-red-dark-background);
+		color: var(--chip-red-dark-text);
+	}
+
+	&[data-variant="gray-light"] {
+		background-color: var(--chip-gray-light-background);
+		color: var(--chip-gray-light-text);
+	}
+
+	&[data-variant="gray-medium"] {
+		background-color: var(--chip-gray-medium-background);
+		color: var(--chip-gray-medium-text);
+	}
+
+	&[data-variant="gray-dark"] {
+		background-color: var(--chip-gray-dark-background);
+		color: var(--chip-gray-dark-text);
+	}
+}
+
+.mana-chip-icon {
+	flex: 0 0 auto;
+}
+
+/* ----- Spinner ---------------------------------------------------------------
+ * The pulsing/low-motion opacity animations run regardless of motion preference:
+ * they are Mana's designated reduced-motion replacement (the component swaps the
+ * flashier types to lowMotion for reduced-motion users in JS).
+ */
+.mana-spinner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.mana-spinner-inner {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	contain: paint;
+}
+
+/* Wandering Cubes */
+.mana-spinner[data-type="wanderingCubes"] .mana-spinner-item {
+	background-color: var(--brand-500);
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-spinner[data-type="wanderingCubes"] .mana-spinner-item {
+		animation: mana-spinner-wandering-cubes 1.8s infinite ease-in-out;
+
+		&:last-child {
+			animation-delay: -0.9s;
+		}
+	}
+}
+
+@keyframes mana-spinner-wandering-cubes {
+	25% {
+		transform: translateX(22px) rotate(-90deg) scale(0.5);
+	}
+
+	50% {
+		transform: translateX(22px) translateY(22px) rotate(-180deg);
+	}
+
+	75% {
+		transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
+	}
+
+	100% {
+		transform: rotate(-360deg);
+	}
+}
+
+/* Chasing Dots */
+.mana-spinner[data-type="chasingDots"] .mana-spinner-item {
+	width: 60%;
+	height: 60%;
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	background-color: var(--brand-500);
+	border-radius: 100%;
+
+	&:last-child {
+		top: auto;
+		bottom: 0;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-spinner[data-type="chasingDots"] .mana-spinner-inner {
+		animation: mana-spinner-rotate 2s infinite linear;
+	}
+
+	.mana-spinner[data-type="chasingDots"] .mana-spinner-item {
+		animation: mana-spinner-chasing-dots-bounce 2s infinite ease-in-out;
+
+		&:last-child {
+			animation-delay: -1s;
+		}
+	}
+}
+
+@keyframes mana-spinner-chasing-dots-bounce {
+	0%,
+	100% {
+		transform: scale(0);
+	}
+
+	50% {
+		transform: scale(1);
+	}
+}
+
+/* Pulsing Ellipsis + Low Motion */
+.mana-spinner[data-type="pulsingEllipsis"] .mana-spinner-inner,
+.mana-spinner[data-type="lowMotion"] .mana-spinner-inner {
+	height: auto;
+	width: 28px;
+	display: flex;
+	justify-content: center;
+}
+
+.mana-spinner[data-type="pulsingEllipsis"] .mana-spinner-item,
+.mana-spinner[data-type="lowMotion"] .mana-spinner-item {
+	width: 6px;
+	height: 6px;
+	margin-right: 2px;
+	background-color: currentColor;
+	border-radius: 3px;
+	display: inline-block;
+	opacity: 0.3;
+
+	&:nth-of-type(2) {
+		animation-delay: 0.2s;
+	}
+
+	&:nth-of-type(3) {
+		animation-delay: 0.4s;
+	}
+}
+
+.mana-spinner[data-type="pulsingEllipsis"] .mana-spinner-item {
+	animation: mana-spinner-pulsing-ellipsis 1.4s infinite ease-in-out;
+}
+
+.mana-spinner[data-type="lowMotion"] .mana-spinner-item {
+	background-color: var(--interactive-text-default);
+	animation: mana-spinner-low-motion 1.4s infinite ease-in-out;
+}
+
+@keyframes mana-spinner-pulsing-ellipsis {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	50% {
+		transform: scale(0.8);
+		opacity: 0.3;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes mana-spinner-low-motion {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.6;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+/* Spinning Circle */
+.mana-spinner[data-type="spinningCircle"],
+.mana-spinner[data-type="spinningCircleSimple"] {
+	& .mana-spinner-inner {
+		transform: rotate(280deg);
+	}
+}
+
+.mana-spinner-circular {
+	height: 100%;
+	width: 100%;
+}
+
+.mana-spinner-path {
+	/* Static fallback arc — the dash keyframes take over when motion is allowed. */
+	stroke-dasharray: 80, 200;
+	stroke-dashoffset: 0;
+	fill: none;
+	stroke-width: 6;
+	stroke-miterlimit: 10;
+	stroke-linecap: round;
+	stroke: var(--brand-500);
+}
+
+.mana-spinner-path-2 {
+	stroke: var(--text-brand);
+	opacity: 0.6;
+}
+
+.mana-spinner-path-3 {
+	stroke: var(--text-brand);
+	opacity: 0.3;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-spinner-circular {
+		animation: mana-spinner-rotate 2s linear infinite;
+	}
+
+	.mana-spinner-path {
+		stroke-dasharray: 1, 200;
+		animation: mana-spinner-circle-dash 2s ease-in-out infinite;
+	}
+
+	.mana-spinner-path-2 {
+		animation-delay: 0.15s;
+	}
+
+	.mana-spinner-path-3 {
+		animation-delay: 0.23s;
+	}
+}
+
+@keyframes mana-spinner-rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes mana-spinner-circle-dash {
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+
+	50% {
+		stroke-dasharray: 130, 200;
+	}
+
+	100% {
+		stroke-dasharray: 130, 200;
+		stroke-dashoffset: -124; /* Approx -(2*pi*r) */
+	}
+}
+
+.mana-spinner[data-static] {
+	& .mana-spinner-item,
+	& .mana-spinner-inner,
+	& .mana-spinner-circular,
+	& .mana-spinner-path {
+		animation: none;
+	}
+}
+
+/* ----- ProgressBar -------------------------------------------------------------
+ * Progress movement is a helpful UX animation and may play under reduced motion
+ * (mirrors Mana's explicit exemption).
+ */
+.mana-progressbar {
+	position: relative;
+	width: 100%;
+	overflow: hidden;
+	background-color: var(--progressbar-track-background);
+	transform: translate3d(0, 0, 0);
+
+	&[data-size="xs"] {
+		height: 2px;
+		border-radius: 2px;
+	}
+
+	&[data-size="sm"] {
+		height: 4px;
+		border-radius: 3px;
+	}
+
+	&[data-size="md"] {
+		height: 6px;
+		border-radius: 3px;
+	}
+
+	&[data-size="lg"] {
+		height: 8px;
+		border-radius: 4px;
+	}
+}
+
+.mana-progressbar-fill {
+	width: 100%;
+	height: 100%;
+	background-color: var(--progressbar-indicator-background);
+}
+
+.mana-progressbar[data-animated] .mana-progressbar-fill {
+	transition: transform 0.2s ease-out;
+}
+
+.mana-progressbar-indeterminate-1,
+.mana-progressbar-indeterminate-2 {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: auto;
+	background-color: var(--progressbar-indicator-background);
+	border-radius: inherit;
+	animation-play-state: paused;
+}
+
+.mana-progressbar-indeterminate-1 {
+	animation: mana-progress-indeterminate-1 2.1s infinite cubic-bezier(0.65, 0.815, 0.735, 0.395);
+}
+
+.mana-progressbar-indeterminate-2 {
+	animation: mana-progress-indeterminate-2 2.1s infinite cubic-bezier(0.165, 0.84, 0.44, 1);
+	animation-delay: 1.15s;
+}
+
+.mana-progressbar[data-animated] .mana-progressbar-indeterminate-1,
+.mana-progressbar[data-animated] .mana-progressbar-indeterminate-2 {
+	animation-play-state: running;
+}
+
+@keyframes mana-progress-indeterminate-1 {
+	0% {
+		left: -35%;
+		right: 100%;
+	}
+
+	60% {
+		left: 100%;
+		right: -90%;
+	}
+
+	100% {
+		left: 100%;
+		right: -90%;
+	}
+}
+
+@keyframes mana-progress-indeterminate-2 {
+	0% {
+		left: -200%;
+		right: 100%;
+	}
+
+	60% {
+		left: 107%;
+		right: -8%;
+	}
+
+	100% {
+		left: 107%;
+		right: -8%;
+	}
+}
+
+/* ----- ProgressCircle ----------------------------------------------------- */
+.mana-progress-circle {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-brand);
+}
+
+.mana-progress-circle-svg {
+	position: absolute;
+	inset: 0;
+}
+
+.mana-progress-circle-background {
+	fill: var(--background-mod-muted);
+}
+
+.mana-progress-circle-progress {
+	fill: none;
+}
+
+.mana-progress-circle-overlay {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* ----- InlineNotice --------------------------------------------------------- */
+.mana-inline-notice {
+	display: grid;
+	grid-template-rows: 1fr;
+	border-radius: var(--radius-sm);
+	border: 1px solid transparent;
+	padding: 8px;
+	width: 100%;
+	box-sizing: border-box;
+
+	&[data-hidden] {
+		grid-template-rows: 0fr;
+		padding-bottom: 0;
+		padding-top: 0;
+		border-width: 0;
+	}
+
+	&[data-type="success"] {
+		background: var(--background-feedback-positive);
+		border-color: var(--inlinenotice-border-positive);
+		color: var(--icon-feedback-positive);
+	}
+
+	&[data-type="warning"] {
+		background: var(--background-feedback-warning);
+		border-color: var(--inlinenotice-border-warning);
+		color: var(--icon-feedback-warning);
+	}
+
+	&[data-type="info"] {
+		background: var(--background-feedback-info);
+		border-color: var(--inlinenotice-border-info);
+		color: var(--icon-feedback-info);
+	}
+
+	&[data-type="critical"] {
+		background: var(--background-feedback-critical);
+		border-color: var(--inlinenotice-border-critical);
+		color: var(--icon-feedback-critical);
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-inline-notice {
+		transition:
+			grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+			padding-bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+			padding-top 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+			border-width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+
+	.mana-inline-notice-inner {
+		transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+	}
+
+	.mana-inline-notice[data-hidden] .mana-inline-notice-inner {
+		transition-delay: 0s;
+	}
+}
+
+.mana-inline-notice-inner {
+	display: flex;
+	overflow: hidden;
+	min-height: 0;
+	opacity: 1;
+}
+
+.mana-inline-notice[data-hidden] .mana-inline-notice-inner {
+	opacity: 0;
+}
+
+.mana-inline-notice-icon {
+	display: flex;
+
+	& svg {
+		flex-shrink: 0;
+	}
+
+	&[data-align="center"] {
+		align-self: center;
+	}
+}
+
+.mana-inline-notice-text {
+	margin-left: var(--space-8);
+	flex: 1;
+	align-self: center;
+
+	& p {
+		margin: 0;
+	}
+
+	& p ~ p {
+		margin-top: 8px;
+	}
+}
+
+.mana-inline-notice-action {
+	margin-top: auto;
+	margin-bottom: auto;
+	margin-left: 16px;
+}
+
+/* ----- Scroller --------------------------------------------------------------- */
+.mana-scroller {
+	position: relative;
+	box-sizing: border-box;
+	min-height: 0;
+	flex: 1 1 auto;
+
+	&[data-orientation="vertical"] {
+		overflow-x: hidden;
+		overflow-y: auto;
+		scrollbar-gutter: stable;
+	}
+
+	&[data-orientation="horizontal"] {
+		overflow-x: auto;
+		overflow-y: hidden;
+	}
+
+	&[data-variant="thin"]::-webkit-scrollbar {
+		width: 8px;
+		height: 8px;
+	}
+
+	&[data-variant="thin"]::-webkit-scrollbar-track {
+		border: 2px solid var(--scrollbar-thin-track);
+		background-color: var(--scrollbar-thin-track);
+	}
+
+	&[data-variant="thin"]::-webkit-scrollbar-thumb {
+		background-clip: padding-box;
+		border: 2px solid transparent;
+		border-radius: 4px;
+		background-color: var(--scrollbar-thin-thumb);
+		min-height: 40px;
+	}
+
+	&[data-variant="auto"]::-webkit-scrollbar {
+		width: 16px;
+		height: 16px;
+	}
+
+	&[data-variant="auto"]::-webkit-scrollbar-track {
+		border: 4px solid transparent;
+		background-clip: padding-box;
+		border-radius: 8px;
+		background-color: var(--scrollbar-auto-track);
+	}
+
+	&[data-variant="auto"]::-webkit-scrollbar-thumb {
+		background-clip: padding-box;
+		border: 4px solid transparent;
+		border-radius: 8px;
+		background-color: var(--scrollbar-auto-thumb);
+		min-height: 40px;
+	}
+
+	&[data-variant="thin"]::-webkit-scrollbar-corner,
+	&[data-variant="auto"]::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
+
+	&[data-variant="none"]::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+	}
+
+	&[data-fade]::-webkit-scrollbar-thumb,
+	&[data-fade]::-webkit-scrollbar-track {
+		visibility: hidden;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		&[data-fade]:hover::-webkit-scrollbar-thumb,
+		&[data-fade]:hover::-webkit-scrollbar-track {
+			visibility: visible;
+		}
+	}
+
+	&[data-fade]:focus-within::-webkit-scrollbar-thumb,
+	&[data-fade]:focus-within::-webkit-scrollbar-track {
+		visibility: visible;
+	}
+}
+
+/* Firefox (no ::-webkit-scrollbar support) */
+@supports not selector(::-webkit-scrollbar) {
+	.mana-scroller[data-variant="thin"] {
+		scrollbar-width: thin;
+		scrollbar-color: var(--scrollbar-thin-thumb) var(--scrollbar-thin-track);
+	}
+
+	.mana-scroller[data-variant="auto"] {
+		scrollbar-color: var(--scrollbar-auto-thumb) var(--scrollbar-auto-track);
+	}
+
+	.mana-scroller[data-variant="none"] {
+		scrollbar-width: none;
+	}
+}
+
+/* ===== forms ===== */
+
+/* ============================================================ */
+/* forms: Button / IconButton / TextButton / ButtonGroup        */
+/*        TextInput / TextArea / SearchBar / Form / Field       */
+/* ============================================================ */
+
+/* ---- Button ---- */
+
+.mana-button {
+	box-sizing: border-box;
+	background: none;
+	padding: 0;
+	margin: 0;
+	flex-grow: 0;
+	flex-shrink: 0;
+	width: min-content;
+	max-width: 100%;
+	text-align: start;
+	color: inherit;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: var(--radius-sm);
+	border: 1px solid transparent;
+	cursor: pointer;
+	position: relative;
+	max-height: min-content;
+	transition:
+		background-color 50ms ease-in,
+		color 50ms ease-in,
+		border-color 50ms ease-in,
+		opacity 50ms ease-in;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			transition:
+				background-color 150ms ease-out,
+				color 150ms ease-out,
+				border-color 150ms ease-out,
+				opacity 150ms ease-out;
+		}
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+}
+
+.mana-button-contents {
+	border-radius: var(--radius-sm);
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+}
+
+.mana-button-children {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+	white-space: nowrap;
+	overflow: hidden;
+	opacity: 1;
+	transition: opacity 200ms ease-out;
+
+	&[data-loading] {
+		opacity: 0;
+	}
+}
+
+.mana-button-icon {
+	flex-shrink: 0;
+}
+
+.mana-button-text {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Sizes: contents min-box accounts for the 1px border on either side. */
+.mana-button[data-size="sm"] {
+	.mana-button-contents {
+		min-height: calc(32px - 2px);
+		min-width: calc(32px - 2px);
+	}
+
+	&[data-has-text] {
+		min-width: var(--mana-button-min-width, 60px);
+	}
+
+	&[data-has-text] .mana-button-contents {
+		padding: calc(var(--space-4) - 1px) calc(var(--space-12) - 1px);
+	}
+}
+
+.mana-button[data-size="md"] {
+	.mana-button-contents {
+		min-height: calc(40px - 2px);
+		min-width: calc(40px - 2px);
+	}
+
+	&[data-has-text] {
+		min-width: var(--mana-button-min-width, 100px);
+	}
+
+	&[data-has-text] .mana-button-contents {
+		padding: calc(var(--space-8) - 1px) calc(var(--space-16) - 1px);
+	}
+}
+
+.mana-button[data-full-width] {
+	/* flex: 1 so multiple fullWidth buttons in a ButtonGroup get equal widths */
+	flex: 1;
+	width: 100%;
+}
+
+/* Variants */
+.mana-button[data-variant="primary"] {
+	color: var(--control-primary-text-default);
+	background-color: var(--control-primary-background-default);
+	border-color: var(--control-primary-border-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-primary-text-hover);
+			background-color: var(--control-primary-background-hover);
+			border-color: var(--control-primary-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-primary-text-active);
+		background-color: var(--control-primary-background-active);
+		border-color: var(--control-primary-border-active);
+	}
+}
+
+.mana-button[data-variant="secondary"] {
+	color: var(--control-secondary-text-default);
+	background-color: var(--control-secondary-background-default);
+	border-color: var(--control-secondary-border-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-secondary-text-hover);
+			background-color: var(--control-secondary-background-hover);
+			border-color: var(--control-secondary-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-secondary-text-active);
+		background-color: var(--control-secondary-background-active);
+		border-color: var(--control-secondary-border-active);
+	}
+}
+
+.mana-button[data-variant="critical-primary"] {
+	color: var(--control-critical-primary-text-default);
+	background-color: var(--control-critical-primary-background-default);
+	border-color: var(--control-critical-primary-border-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-critical-primary-text-hover);
+			background-color: var(--control-critical-primary-background-hover);
+			border-color: var(--control-critical-primary-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-critical-primary-text-active);
+		background-color: var(--control-critical-primary-background-active);
+		border-color: var(--control-critical-primary-border-active);
+	}
+}
+
+.mana-button[data-variant="critical-secondary"] {
+	color: var(--control-critical-secondary-text-default);
+	background-color: var(--control-critical-secondary-background-default);
+	border-color: var(--control-critical-secondary-border-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-critical-secondary-text-hover);
+			background-color: var(--control-critical-secondary-background-hover);
+			border-color: var(--control-critical-secondary-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-critical-secondary-text-active);
+		background-color: var(--control-critical-secondary-background-active);
+		border-color: var(--control-critical-secondary-border-active);
+	}
+}
+
+.mana-button[data-variant="active"] {
+	color: var(--control-connected-text-default);
+	background-color: var(--control-connected-background-default);
+	border-color: var(--control-connected-border-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-connected-text-hover);
+			background-color: var(--control-connected-background-hover);
+			border-color: var(--control-connected-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-connected-text-active);
+		background-color: var(--control-connected-background-active);
+		border-color: var(--control-connected-border-active);
+	}
+}
+
+.mana-button[data-variant="overlay-primary"] {
+	color: var(--control-overlay-primary-text-default);
+	background-color: var(--control-overlay-primary-background-default);
+	border-color: var(--control-overlay-primary-border-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-overlay-primary-text-hover);
+			background-color: var(--control-overlay-primary-background-hover);
+			border-color: var(--control-overlay-primary-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-overlay-primary-text-active);
+		background-color: var(--control-overlay-primary-background-active);
+		border-color: var(--control-overlay-primary-border-active);
+	}
+}
+
+.mana-button[data-variant="overlay-secondary"] {
+	color: var(--control-overlay-secondary-text-default);
+	background-color: var(--control-overlay-secondary-background-default);
+	border-color: var(--control-overlay-secondary-border-default);
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-overlay-secondary-text-hover);
+			background-color: var(--control-overlay-secondary-background-hover);
+			border-color: var(--control-overlay-secondary-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-overlay-secondary-text-active);
+		background-color: var(--control-overlay-secondary-background-active);
+		border-color: var(--control-overlay-secondary-border-active);
+	}
+}
+
+.mana-button[data-variant="icon-only"] {
+	color: var(--control-icon-only-icon-default);
+	background-color: transparent;
+	border-color: transparent;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-icon-only-icon-hover);
+			background-color: var(--control-icon-only-background-hover);
+			border-color: var(--control-icon-only-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-icon-only-icon-active);
+		background-color: var(--control-icon-only-background-active);
+		border-color: var(--control-icon-only-border-active);
+	}
+}
+
+/* Expressive: simplified (no glow animation); rounder 8px shape per Mana. */
+.mana-button[data-variant="expressive"] {
+	border-radius: 8px;
+	color: var(--control-expressive-text-default);
+	background-color: var(--control-expressive-background-default);
+	border-color: var(--control-expressive-border-default);
+
+	.mana-button-contents {
+		border-radius: 8px;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--control-expressive-text-hover);
+			background-color: var(--control-expressive-background-hover);
+			border-color: var(--control-expressive-border-hover);
+		}
+	}
+
+	&:active {
+		color: var(--control-expressive-text-active);
+		background-color: var(--control-expressive-background-active);
+		border-color: var(--control-expressive-border-active);
+	}
+}
+
+/* Loading spinner: CSS-only pulsing ellipsis. */
+.mana-button-spinner {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 3px;
+
+	> span {
+		width: 6px;
+		height: 6px;
+		border-radius: var(--radius-round);
+		background-color: currentColor;
+		opacity: 0.6;
+	}
+}
+
+.mana-button[data-size="sm"] .mana-button-spinner > span {
+	width: 5px;
+	height: 5px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-button-spinner {
+		animation: mana-spinner-fade-in 200ms ease;
+	}
+
+	.mana-button-spinner > span {
+		animation: mana-pulsing-ellipsis 1.4s infinite ease-in-out both;
+	}
+
+	.mana-button-spinner > span:nth-child(2) {
+		animation-delay: 0.2s;
+	}
+
+	.mana-button-spinner > span:nth-child(3) {
+		animation-delay: 0.4s;
+	}
+}
+
+@keyframes mana-spinner-fade-in {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes mana-pulsing-ellipsis {
+	0%,
+	80%,
+	100% {
+		opacity: 0.3;
+		transform: scale(0.85);
+	}
+
+	40% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* ---- TextButton ---- */
+
+.mana-text-button {
+	box-sizing: border-box;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	flex-grow: 0;
+	flex-shrink: 0;
+	max-width: 100%;
+	text-align: start;
+	text-decoration: none;
+	cursor: pointer;
+	display: inline-flex;
+	width: min-content;
+	gap: var(--space-4);
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: default;
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover:not(:disabled) .mana-text-button-text {
+			text-decoration: underline;
+		}
+	}
+}
+
+.mana-text-button-text {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mana-text-button[data-variant="primary"] {
+	color: var(--text-brand);
+}
+
+.mana-text-button[data-variant="secondary"] {
+	color: var(--text-strong);
+}
+
+.mana-text-button[data-variant="always-white"] {
+	color: var(--white);
+}
+
+.mana-text-button[data-variant="critical"] {
+	color: var(--text-feedback-critical);
+}
+
+/* ---- ButtonGroup ---- */
+
+.mana-button-group {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: var(--space-8);
+	align-items: center;
+
+	&[data-direction="vertical"] {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	&[data-full-width] {
+		width: 100%;
+	}
+
+	&[data-no-wrap] {
+		flex-wrap: nowrap;
+	}
+}
+
+/* ---- TextInput / TextArea input chrome ---- */
+
+.mana-input {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-4);
+	width: 100%;
+	color: var(--input-text-default);
+	background-color: var(--input-background-default);
+	border: 1px solid var(--input-border-default);
+	border-radius: var(--radius-sm);
+	transition: border-color 100ms ease;
+
+	&[data-size="sm"] {
+		min-height: var(--control-item-height-sm);
+		font-size: 14px;
+		line-height: 1.2857;
+	}
+
+	&[data-size="md"] {
+		min-height: var(--control-input-height-md);
+		font-size: 16px;
+		line-height: 1.25;
+	}
+
+	&[data-read-only] {
+		border-color: var(--input-border-readonly);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		&:not([data-read-only]):not([data-disabled]):not(:focus-within):hover {
+			border-color: var(--input-border-hover);
+		}
+	}
+
+	&:not([data-read-only]):has(input:focus, textarea:focus) {
+		border-color: var(--input-border-active);
+		outline: 2px solid var(--input-border-active);
+		/* inset outline so it isn't cropped by overflow */
+		outline-offset: -2px;
+	}
+
+	&[data-error] {
+		color: var(--input-text-error-default);
+		background-color: var(--input-background-error-default);
+		border-color: var(--input-border-error-default);
+
+		&:not([data-read-only]):has(input:focus, textarea:focus) {
+			border-color: var(--input-border-error-default);
+			outline-color: var(--input-border-error-default);
+		}
+
+		@media (hover: hover) and (pointer: fine) {
+			&:not([data-read-only], [data-disabled], :focus-within):hover {
+				border-color: var(--input-border-error-default);
+				outline: 2px solid var(--input-border-error-default);
+				outline-offset: -2px;
+			}
+		}
+	}
+
+	&[data-disabled] {
+		user-select: none;
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	&[data-leading] {
+		padding-inline-start: var(--space-4);
+
+		.mana-input-native {
+			padding-inline-start: 0;
+		}
+	}
+
+	&[data-trailing] {
+		padding-inline-end: var(--space-4);
+
+		.mana-input-native {
+			padding-inline-end: 0;
+		}
+	}
+}
+
+.mana-input-native {
+	border: none;
+	box-sizing: border-box;
+	min-width: 30%;
+	flex: 1;
+	background-color: transparent;
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	padding-block: 0;
+	padding-inline: var(--space-12);
+	min-height: calc(var(--control-input-height-md) - 2px);
+
+	&:focus,
+	&:focus-visible {
+		/* the .mana-input wrapper draws the focus treatment */
+		outline: none;
+	}
+
+	&:disabled {
+		user-select: none;
+		cursor: not-allowed;
+	}
+
+	&::placeholder {
+		user-select: none;
+		color: var(--input-placeholder-text-default);
+	}
+}
+
+.mana-input[data-size="sm"] .mana-input-native {
+	min-height: calc(var(--control-item-height-sm) - 2px);
+}
+
+.mana-input-accessory {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	aspect-ratio: 1 / 1;
+	height: calc(var(--control-input-height-md) - var(--space-4) * 2 - 2px);
+	border-radius: var(--radius-xs);
+	color: var(--input-icon-default);
+}
+
+.mana-input[data-size="sm"] .mana-input-accessory {
+	height: calc(var(--control-item-height-sm) - var(--space-4) * 2 - 2px);
+}
+
+.mana-input-leading-text {
+	color: var(--input-placeholder-text-default);
+	padding-inline-start: var(--space-4);
+}
+
+.mana-input-clear {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	flex-shrink: 0;
+	aspect-ratio: 1 / 1;
+	height: calc(var(--control-input-height-md) - var(--space-4) * 2 - 2px);
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	border-radius: var(--radius-xs);
+	color: var(--icon-subtle);
+	cursor: pointer;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			color: var(--icon-strong);
+		}
+	}
+}
+
+.mana-input[data-size="sm"] .mana-input-clear {
+	height: calc(var(--control-item-height-sm) - var(--space-4) * 2 - 2px);
+}
+
+/* Multi-line (TextArea) */
+.mana-input[data-multiline] {
+	align-items: stretch;
+	min-height: 0;
+	font-size: 16px;
+	line-height: 1.25;
+}
+
+.mana-textarea-native {
+	height: auto;
+	resize: none;
+	appearance: none;
+	width: 100%;
+	box-sizing: border-box;
+	background-color: transparent;
+	border: none;
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	color: inherit;
+	padding: var(--space-12) 10px;
+
+	&:focus,
+	&:focus-visible {
+		outline: none;
+	}
+
+	&:disabled {
+		user-select: none;
+		cursor: not-allowed;
+	}
+
+	&::placeholder {
+		user-select: none;
+		color: var(--input-placeholder-text-default);
+	}
+}
+
+/* ---- Form / Field / FieldSet / FieldGroup ---- */
+
+.mana-form {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-24);
+}
+
+.mana-field {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+
+	&[data-disabled] {
+		.mana-field-label,
+		.mana-field-description,
+		.mana-field-helper-row {
+			opacity: 0.5;
+		}
+	}
+}
+
+.mana-field-full-width {
+	flex: 1 1 auto;
+	width: 100%;
+}
+
+.mana-field-label-container {
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	margin-bottom: var(--space-8);
+
+	&:has(> .mana-visually-hidden:only-child) {
+		margin-bottom: 0;
+	}
+}
+
+.mana-field-label {
+	color: var(--text-strong);
+}
+
+.mana-field-required {
+	display: inline-block;
+	margin-left: var(--space-4);
+	color: var(--text-feedback-critical);
+}
+
+.mana-field-description {
+	color: var(--text-subtle);
+	max-width: 70ch;
+}
+
+.mana-field-control {
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+}
+
+.mana-field-helper-row {
+	min-width: 0;
+	display: grid;
+	align-items: start;
+	gap: var(--space-12);
+	grid-template-columns: 1fr auto;
+}
+
+.mana-field-error,
+.mana-field-success {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: start;
+	gap: var(--space-4);
+}
+
+.mana-field-error {
+	color: var(--text-feedback-critical);
+}
+
+.mana-field-success {
+	color: var(--text-feedback-positive);
+}
+
+.mana-field-helper-text {
+	color: var(--text-subtle);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-field-error,
+	.mana-field-success {
+		animation: mana-field-slide-down 300ms ease-in-out;
+	}
+}
+
+@keyframes mana-field-slide-down {
+	from {
+		opacity: 0;
+		transform: translateY(-4px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.mana-character-count {
+	color: var(--text-subtle);
+	font-variant-numeric: tabular-nums;
+}
+
+.mana-fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-16);
+	min-width: 0;
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.mana-fieldset-legend {
+	display: flex;
+	align-items: center;
+	gap: var(--space-8);
+	padding: 0;
+	color: var(--text-strong);
+	margin-bottom: var(--space-12);
+}
+
+.mana-fieldset-description {
+	color: var(--text-default);
+	margin-bottom: var(--space-12);
+}
+
+.mana-fieldset-legend + .mana-fieldset-description {
+	margin-top: -8px;
+	margin-bottom: 0;
+}
+
+.mana-field-group {
+	display: flex;
+	flex-direction: row;
+	gap: var(--space-8);
+	align-items: flex-end;
+
+	> .mana-field {
+		flex: 1 1 0;
+	}
+}
+
+/* ===== controls ===== */
+
+/* ============================================================
+ * controls — Checkbox, CheckboxGroup, RadioGroup, Switch,
+ * TagGroup/Tag, TabBar, Tooltip/RichTooltip
+ * ============================================================ */
+
+/* ---- Shared group label (CheckboxGroup / RadioGroup) ---- */
+
+.mana-control-group-label {
+	color: var(--text-strong);
+}
+
+.mana-control-group-description {
+	color: var(--text-subtle);
+	margin-top: var(--space-4);
+}
+
+/* ---- Checkbox (ported from BaseCheckbox.module.css) ---- */
+
+.mana-checkbox {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	max-width: 100%;
+	border-radius: var(--radius-sm);
+	gap: var(--space-12);
+	cursor: pointer;
+}
+
+.mana-checkbox[data-disabled] {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.mana-checkbox:has(> input:focus-visible) .mana-checkbox-indicator,
+.mana-menu-item:focus-visible .mana-checkbox-indicator {
+	outline: 2px solid var(--border-focus);
+	outline-offset: -2px;
+}
+
+.mana-checkbox-indicator {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 0 0 auto;
+	box-sizing: border-box;
+	border-radius: var(--radius-xs);
+	border: 1px solid var(--checkbox-border-default);
+	background-color: var(--checkbox-background-default);
+	width: 20px;
+	height: 20px;
+	color: var(--checkbox-icon-active);
+}
+
+.mana-checkbox-indicator svg {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	opacity: 0;
+	transform-origin: 50% 50%;
+}
+
+.mana-checkbox-check {
+	transform: scale(0.7);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-checkbox-indicator {
+		transition:
+			background-color 150ms ease-in-out,
+			border-color 150ms ease-in-out;
+	}
+
+	.mana-checkbox-indicator[data-animation="in"] .mana-checkbox-dot {
+		animation: mana-checkbox-dot-grow 300ms cubic-bezier(0.65, 0, 0.83, 0.83) both;
+	}
+
+	.mana-checkbox-indicator[data-animation="in"] .mana-checkbox-check {
+		animation: mana-checkbox-check-draw 300ms cubic-bezier(0.65, 0, 0.83, 0.83) both;
+	}
+
+	.mana-checkbox-indicator[data-animation="out"] .mana-checkbox-dot {
+		animation: mana-checkbox-dot-shrink 120ms cubic-bezier(0.65, 0, 0.83, 0.84) both;
+	}
+
+	.mana-checkbox-indicator[data-animation="out"] .mana-checkbox-check {
+		animation: mana-checkbox-check-undraw 120ms cubic-bezier(0.65, 0, 0.83, 0.84) both;
+	}
+}
+
+@keyframes mana-checkbox-dot-grow {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	25% {
+		opacity: 1;
+		transform: scale(3);
+	}
+	26%,
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes mana-checkbox-dot-shrink {
+	0%,
+	25% {
+		opacity: 0;
+		transform: scale(2);
+	}
+	26% {
+		opacity: 1;
+		transform: scale(2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes mana-checkbox-check-draw {
+	0%,
+	25% {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+	26% {
+		opacity: 1;
+		transform: scale(0.7);
+	}
+	75% {
+		transform: scale(1.1);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes mana-checkbox-check-undraw {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	25% {
+		opacity: 1;
+		transform: scale(0.7);
+	}
+	26%,
+	100% {
+		opacity: 0;
+		transform: scale(0.7);
+	}
+}
+
+/* Selected / indeterminate */
+.mana-checkbox-indicator[data-selected] {
+	background-color: var(--checkbox-background-selected-default);
+	border-color: var(--checkbox-border-selected-default);
+}
+
+.mana-checkbox-indicator[data-selected] .mana-checkbox-check {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Unselected hovered */
+@media (hover: hover) and (pointer: fine) {
+	:is(.mana-checkbox, .mana-menu-item):hover:not([data-disabled]):not([aria-disabled="true"])
+		.mana-checkbox-indicator:not([data-selected]) {
+		background-color: var(--checkbox-background-hover);
+		border-color: var(--checkbox-border-hover);
+	}
+}
+
+/* Selected hovered */
+@media (hover: hover) and (pointer: fine) {
+	:is(.mana-checkbox, .mana-menu-item):hover:not([data-disabled]):not([aria-disabled="true"])
+		.mana-checkbox-indicator[data-selected] {
+		background-color: var(--checkbox-background-selected-hover);
+		border-color: var(--checkbox-border-selected-hover);
+	}
+}
+
+:is(.mana-checkbox, .mana-menu-item):active:not([data-disabled]):not([aria-disabled="true"])
+	.mana-checkbox-indicator {
+	background-color: var(--checkbox-background-active);
+	border-color: var(--checkbox-border-active);
+}
+
+.mana-checkbox-body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	min-width: 0;
+}
+
+.mana-checkbox-label {
+	color: var(--text-strong);
+}
+
+.mana-checkbox-description {
+	color: var(--text-subtle);
+}
+
+.mana-checkbox-group-list,
+.mana-radio-group-list {
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	gap: var(--space-16);
+	padding: var(--space-8) 0 var(--space-4);
+}
+
+/* ---- RadioGroup (ported from BaseRadioGroup.module.css) ---- */
+
+.mana-radio {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-12);
+	border-radius: var(--radius-sm);
+	cursor: pointer;
+}
+
+.mana-radio[data-disabled] {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.mana-radio:has(> input:focus-visible) {
+	outline: 2px solid var(--border-focus);
+	outline-offset: 2px;
+}
+
+.mana-radio-svg {
+	display: block;
+	overflow: visible;
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+}
+
+.mana-radio-outer,
+.mana-radio-dot {
+	transform-box: fill-box;
+	transform-origin: center;
+}
+
+.mana-radio-outer {
+	fill: var(--radio-background-default);
+	stroke: var(--radio-border-default);
+	stroke-width: 2;
+}
+
+.mana-radio-dot {
+	fill: var(--radio-thumb-background-active);
+	opacity: 0;
+	transform: scale(0);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-radio-dot {
+		transition:
+			transform 333ms cubic-bezier(0.26, 0.21, 0.67, 1),
+			opacity 160ms cubic-bezier(0.33, 0, 0.67, 1);
+	}
+}
+
+/* Selected */
+.mana-radio[data-selected] .mana-radio-outer {
+	fill: var(--radio-background-selected-default);
+	stroke: var(--radio-border-selected-default);
+}
+
+.mana-radio[data-selected] .mana-radio-dot {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Unselected hovered */
+@media (hover: hover) and (pointer: fine) {
+	.mana-radio:not([data-selected]):not([data-disabled]):hover .mana-radio-outer {
+		fill: var(--radio-background-hover);
+		stroke: var(--radio-border-hover);
+	}
+}
+
+/* Selected hovered */
+@media (hover: hover) and (pointer: fine) {
+	.mana-radio[data-selected]:not([data-disabled]):hover .mana-radio-outer {
+		fill: var(--radio-background-selected-hover);
+		stroke: var(--radio-border-selected-hover);
+	}
+}
+
+.mana-radio-body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	min-width: 0;
+}
+
+.mana-radio-label {
+	color: var(--text-strong);
+}
+
+.mana-radio-description {
+	color: var(--text-subtle);
+}
+
+.mana-radio-standalone {
+	cursor: default;
+}
+
+/* ---- Switch (ported from SwitchIndicator.module.css; 48x24 track, 24px thumb slot) ---- */
+
+.mana-switch {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-12);
+	cursor: pointer;
+}
+
+.mana-switch[data-disabled] {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.mana-switch:has(> input:focus-visible) .mana-switch-track {
+	outline: 2px solid var(--border-focus);
+	outline-offset: 2px;
+}
+
+.mana-switch-body {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	min-width: 0;
+	flex: 1 1 auto;
+}
+
+.mana-switch-label {
+	color: var(--text-strong);
+}
+
+.mana-switch-description {
+	color: var(--text-subtle);
+}
+
+.mana-switch-track {
+	position: relative;
+	box-sizing: border-box;
+	border-radius: var(--radius-lg);
+	border: 1px solid var(--switch-border-default);
+	background-color: var(--switch-background-default);
+	width: 48px;
+	height: 24px;
+	flex-shrink: 0;
+}
+
+.mana-switch-thumb {
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	width: 16px;
+	height: 16px;
+	border-radius: var(--radius-round);
+	background-color: var(--switch-thumb-background-default);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-switch-track {
+		transition:
+			background-color 300ms ease,
+			border-color 300ms ease;
+	}
+
+	.mana-switch-thumb {
+		transition:
+			transform 300ms cubic-bezier(0.33, 0, 0.25, 1),
+			background-color 300ms ease;
+	}
+}
+
+.mana-switch[data-selected] .mana-switch-track {
+	background-color: var(--switch-background-selected-default);
+	border-color: var(--switch-border-selected-default);
+}
+
+.mana-switch[data-selected] .mana-switch-thumb {
+	transform: translateX(24px);
+	background-color: var(--switch-thumb-background-selected-default);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-switch:hover:not([data-disabled]):not([data-selected]) .mana-switch-track {
+		background-color: var(--switch-background-hover);
+		border-color: var(--switch-border-hover);
+	}
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-switch[data-selected]:hover:not([data-disabled]) .mana-switch-track {
+		background-color: var(--switch-background-selected-hover);
+		border-color: var(--switch-border-selected-hover);
+	}
+}
+
+/* ---- TagGroup / Tag (ported from TagGroup.module.css / Tag.module.css) ---- */
+
+.mana-tag-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-8);
+}
+
+.mana-tag {
+	font: inherit;
+	color: var(--text-default);
+	border: 1px solid var(--border-subtle);
+	background-color: var(--background-mod-subtle);
+	padding: var(--space-4) var(--space-12);
+	outline: none;
+	cursor: default;
+	display: inline-flex;
+	align-items: center;
+	white-space: nowrap;
+	gap: var(--space-8);
+	box-sizing: border-box;
+	border-radius: var(--radius-sm);
+	min-height: 40px;
+	transition:
+		background-color 50ms ease-in,
+		color 50ms ease-in,
+		border-color 50ms ease-in,
+		opacity 50ms ease-in;
+}
+
+.mana-tag:has(.mana-tag-remove) {
+	padding-right: var(--space-8);
+}
+
+.mana-tag[data-selectable] {
+	cursor: pointer;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tag[data-selectable]:hover:not(:disabled) {
+		border-color: var(--border-normal);
+		background: var(--background-mod-normal);
+	}
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tag[data-selectable]:hover:not(:disabled)[data-selected] {
+		border-color: var(--input-border-active);
+		background: hsl(var(--opacity-blurple-8-hsl) / 0.16);
+	}
+}
+
+.mana-tag:focus-visible {
+	outline: 1px solid var(--border-focus);
+	outline-offset: 1px;
+}
+
+.mana-tag[data-selected] {
+	border-color: var(--input-border-active);
+	background: hsl(var(--opacity-blurple-8-hsl) / 0.12);
+}
+
+.mana-tag:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.mana-tag-remove {
+	background: none;
+	padding: 0;
+	outline: none;
+	border-radius: var(--radius-xs);
+	aspect-ratio: 1 / 1;
+	align-self: stretch;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid transparent;
+	color: var(--icon-default);
+	cursor: pointer;
+	transition:
+		background-color 50ms ease-in,
+		color 50ms ease-in,
+		border-color 50ms ease-in,
+		opacity 50ms ease-in;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tag-remove:hover {
+		background-color: var(--control-icon-only-background-hover);
+		border-color: var(--control-icon-only-border-hover);
+		transition:
+			background-color 150ms ease-out,
+			color 150ms ease-out,
+			border-color 150ms ease-out,
+			opacity 150ms ease-out;
+	}
+}
+
+.mana-tag:disabled .mana-tag-remove {
+	cursor: not-allowed;
+}
+
+.mana-tag-image,
+.mana-tag-avatar {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+}
+
+.mana-tag-avatar {
+	border-radius: var(--radius-round);
+	object-fit: cover;
+	overflow: hidden;
+	background-color: var(--black);
+}
+
+.mana-tag-role-dot {
+	width: 16px;
+	height: 16px;
+	border-radius: var(--radius-round);
+	border: 1px solid var(--text-strong);
+	box-sizing: border-box;
+	display: block;
+}
+
+/* Inline (compact) layout */
+.mana-tag-group[data-layout="inline"] {
+	display: contents;
+}
+
+.mana-tag-group[data-layout="inline"] .mana-tag {
+	border-radius: var(--radius-xs);
+	padding: var(--space-4) var(--space-8);
+	gap: var(--space-4);
+	min-height: 30px;
+}
+
+.mana-tag-group[data-layout="inline"] .mana-tag:has(.mana-tag-remove) {
+	padding-right: var(--space-4);
+}
+
+.mana-tag-group[data-layout="inline"] .mana-tag-image,
+.mana-tag-group[data-layout="inline"] .mana-tag-avatar,
+.mana-tag-group[data-layout="inline"] .mana-tag-role-dot {
+	width: 12px;
+	height: 12px;
+}
+
+/* ---- TabBar (ported from TabBar.module.css) ---- */
+
+.mana-tabbar {
+	display: flex;
+}
+
+.mana-tabbar-item {
+	background: none;
+	border: none;
+	font: inherit;
+	text-align: left;
+	padding: 0;
+	position: relative;
+	line-height: 20px;
+	cursor: pointer;
+	color: var(--text-subtle);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-tabbar-item {
+		transition: background-color 0.3s ease;
+	}
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tabbar-item:hover {
+		color: var(--text-strong);
+	}
+}
+
+.mana-tabbar-item:active {
+	color: var(--text-strong);
+}
+
+.mana-tabbar-item[data-selected] {
+	cursor: default;
+	color: var(--text-strong);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tabbar-item[aria-disabled="true"]:hover {
+		cursor: default;
+		color: var(--text-muted);
+	}
+}
+
+.mana-tabbar-item[aria-disabled="true"] {
+	cursor: default;
+	color: var(--text-muted);
+}
+
+.mana-tabbar-header {
+	color: var(--text-subtle);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+button.mana-tabbar-header {
+	background: none;
+	border: none;
+	font: inherit;
+	padding: 0;
+	text-align: left;
+	cursor: pointer;
+}
+
+.mana-tabbar-header-text {
+	display: block;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow-x: hidden;
+}
+
+.mana-tabbar-separator {
+	background-color: var(--border-subtle);
+}
+
+/* side (vertical settings list) */
+.mana-tabbar[data-type="side"] {
+	flex-direction: column;
+	flex: 1;
+}
+
+.mana-tabbar[data-type="side"] .mana-tabbar-header {
+	padding: 6px 10px;
+}
+
+.mana-tabbar[data-type="side"] .mana-tabbar-header:first-child {
+	padding-top: 0;
+}
+
+.mana-tabbar[data-type="side"] .mana-tabbar-item {
+	padding: 6px 10px;
+	margin-bottom: 2px;
+	border-radius: 4px;
+}
+
+.mana-tabbar[data-type="side"] .mana-tabbar-separator {
+	margin: 8px 10px;
+	height: 1px;
+}
+
+/* top (underline row) */
+.mana-tabbar[data-type="top"] {
+	flex-direction: row;
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.mana-tabbar[data-type="top"] .mana-tabbar-item {
+	padding-bottom: 16px;
+	margin-bottom: -1px;
+	line-height: 14px;
+}
+
+.mana-tabbar[data-type="top"] .mana-tabbar-item + .mana-tabbar-item {
+	margin-left: var(--space-xl);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tabbar[data-type="top"] .mana-tabbar-item:hover::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		width: 100%;
+		height: 2px;
+		left: 0;
+		margin-top: -2px;
+		background: var(--interactive-text-active);
+		z-index: 1;
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+	}
+}
+
+.mana-tabbar[data-type="top"] .mana-tabbar-item[data-selected]::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	height: 2px;
+	left: 0;
+	margin-top: -2px;
+	background: var(--interactive-text-active);
+	z-index: 1;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+}
+
+.mana-tabbar[data-type="top"] .mana-tabbar-item[data-selected] {
+	color: var(--interactive-text-active);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tabbar[data-type="top"] .mana-tabbar-item[data-look="brand"]:hover::after {
+		background: var(--brand-500);
+	}
+}
+
+.mana-tabbar[data-type="top"] .mana-tabbar-item[data-look="brand"][data-selected]::after {
+	background: var(--control-brand-foreground);
+}
+
+.mana-tabbar[data-type="top"] .mana-tabbar-item[data-look="brand"][data-selected] {
+	color: var(--text-brand);
+}
+
+.mana-tabbar[data-type="top"] .mana-tabbar-item[aria-disabled="true"] {
+	cursor: not-allowed;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tabbar[data-type="top"] .mana-tabbar-item[aria-disabled="true"]:hover::after {
+		content: none;
+	}
+}
+
+/* top-pill (pill row) */
+.mana-tabbar[data-type="top-pill"] {
+	flex-direction: row;
+}
+
+.mana-tabbar[data-type="top-pill"] .mana-tabbar-item {
+	border-radius: var(--radius-sm);
+	margin: 0 8px;
+	padding: 4px 12px;
+	min-height: 32px;
+	cursor: pointer;
+}
+
+.mana-tabbar[data-type="top-pill"] .mana-tabbar-separator {
+	width: 1px;
+}
+
+.mana-tabbar[data-type="top-pill"] .mana-tabbar-item[aria-disabled="true"] {
+	cursor: not-allowed;
+}
+
+/* shared grey-look backgrounds for side + top-pill */
+@media (hover: hover) and (pointer: fine) {
+	.mana-tabbar[data-type="side"] .mana-tabbar-item[data-look="grey"]:hover:not([aria-disabled="true"]),
+	.mana-tabbar[data-type="top-pill"] .mana-tabbar-item[data-look="grey"]:hover:not([aria-disabled="true"]) {
+		background-color: var(--background-mod-subtle);
+	}
+}
+
+.mana-tabbar[data-type="side"] .mana-tabbar-item[data-look="grey"]:active:not([aria-disabled="true"]),
+.mana-tabbar[data-type="top-pill"] .mana-tabbar-item[data-look="grey"]:active:not([aria-disabled="true"]),
+.mana-tabbar[data-type="side"] .mana-tabbar-item[data-look="grey"][data-selected],
+.mana-tabbar[data-type="top-pill"] .mana-tabbar-item[data-look="grey"][data-selected] {
+	background-color: var(--background-mod-strong);
+}
+
+/* destructive items (side + top-pill) */
+.mana-tabbar[data-type="side"] .mana-tabbar-item[data-variant="destructive"]:not([aria-disabled="true"]),
+.mana-tabbar[data-type="top-pill"] .mana-tabbar-item[data-variant="destructive"]:not([aria-disabled="true"]) {
+	color: var(--text-feedback-critical);
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-tabbar[data-type="side"]
+		.mana-tabbar-item[data-variant="destructive"]:hover:not([aria-disabled="true"]),
+	.mana-tabbar[data-type="top-pill"]
+		.mana-tabbar-item[data-variant="destructive"]:hover:not([aria-disabled="true"]) {
+		color: var(--text-feedback-critical);
+		background-color: var(--background-feedback-critical);
+	}
+}
+
+.mana-tabbar[data-type="side"]
+	.mana-tabbar-item[data-variant="destructive"]:active:not([aria-disabled="true"]),
+.mana-tabbar[data-type="top-pill"]
+	.mana-tabbar-item[data-variant="destructive"]:active:not([aria-disabled="true"]),
+.mana-tabbar[data-type="side"]
+	.mana-tabbar-item[data-variant="destructive"][data-selected]:not([aria-disabled="true"]),
+.mana-tabbar[data-type="top-pill"]
+	.mana-tabbar-item[data-variant="destructive"][data-selected]:not([aria-disabled="true"]) {
+	color: var(--white);
+	background-color: var(--background-feedback-critical);
+}
+
+/* ---- Tooltip / RichTooltip (ported from Tooltip.module.css / RichTooltip.module.css) ---- */
+
+.mana-tooltip {
+	position: relative;
+	max-width: 200px;
+	width: auto;
+	box-sizing: border-box;
+	padding: var(--space-8) var(--space-12);
+	border-radius: var(--radius-sm);
+	box-shadow:
+		inset 0 0 0 1px var(--border-subtle),
+		var(--shadow-high);
+	background-color: var(--background-surface-high);
+	color: var(--text-default);
+	will-change: opacity, transform;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	gap: var(--space-8);
+	pointer-events: none;
+}
+
+.mana-tooltip[data-placement="top"] {
+	transform-origin: 50% 100%;
+}
+
+.mana-tooltip[data-placement="bottom"] {
+	transform-origin: 50% 0%;
+}
+
+.mana-tooltip[data-placement="left"] {
+	transform-origin: 100% 50%;
+}
+
+.mana-tooltip[data-placement="right"] {
+	transform-origin: 0% 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-tooltip {
+		animation: mana-tooltip-in 100ms ease-out;
+	}
+}
+
+@keyframes mana-tooltip-in {
+	from {
+		opacity: 0;
+		transform: scale(0.96);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+/* Caret: rotated square flush against the edge facing the trigger */
+.mana-tooltip-caret {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background-color: var(--background-surface-high);
+	transform: rotate(45deg);
+}
+
+.mana-tooltip[data-placement="top"] .mana-tooltip-caret {
+	bottom: -4px;
+	left: 50%;
+	margin-left: -4px;
+	border-right: 1px solid var(--border-subtle);
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.mana-tooltip[data-placement="bottom"] .mana-tooltip-caret {
+	top: -4px;
+	left: 50%;
+	margin-left: -4px;
+	border-left: 1px solid var(--border-subtle);
+	border-top: 1px solid var(--border-subtle);
+}
+
+.mana-tooltip[data-placement="left"] .mana-tooltip-caret {
+	right: -4px;
+	top: 50%;
+	margin-top: -4px;
+	border-top: 1px solid var(--border-subtle);
+	border-right: 1px solid var(--border-subtle);
+}
+
+.mana-tooltip[data-placement="right"] .mana-tooltip-caret {
+	left: -4px;
+	top: 50%;
+	margin-top: -4px;
+	border-bottom: 1px solid var(--border-subtle);
+	border-left: 1px solid var(--border-subtle);
+}
+
+/* Rich tooltip variant */
+.mana-tooltip[data-rich] {
+	max-width: none;
+	width: auto;
+	padding: 0;
+	text-align: initial;
+}
+
+.mana-rich-tooltip-content {
+	display: flex;
+	align-items: center;
+	gap: var(--space-8);
+	max-width: 272px;
+	padding: var(--space-8) var(--space-12);
+	box-sizing: border-box;
+}
+
+.mana-tooltip[data-padding="lg"] .mana-rich-tooltip-content {
+	padding: var(--space-16);
+	max-width: 372px;
+	gap: var(--space-16);
+}
+
+.mana-rich-tooltip-asset {
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mana-rich-tooltip-asset > * {
+	max-width: 100%;
+	height: auto;
+}
+
+.mana-rich-tooltip-text {
+	flex: 1;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.mana-rich-tooltip-no-asset .mana-rich-tooltip-text {
+	text-align: center;
+}
+
+.mana-rich-tooltip-title {
+	color: var(--text-default);
+}
+
+.mana-rich-tooltip-body {
+	color: var(--text-subtle);
+}
+
+.mana-rich-tooltip-body-strong {
+	color: var(--text-default);
+}
+
+/* ===== overlays ===== */
+
+/* ============================================================
+ * overlays — Modal, Popover, Select, Menu
+ * Pixel values ported from Mana's Modal.module.css, Scrim.module.css,
+ * Popover.module.css, PopoverCaret.module.css, Select.module.css,
+ * Option.module.css, ListBox.module.css, and Menu.module.css.
+ * ============================================================ */
+
+/* ----- Shared action button (Modal / Popover action bars) ----- */
+
+.mana-overlay-button {
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--space-8);
+	height: var(--control-input-height-md);
+	padding: 0 var(--space-16);
+	border: 1px solid transparent;
+	border-radius: var(--radius-sm);
+	font-family: var(--font-primary);
+	font-size: 14px;
+	line-height: 1;
+	font-weight: var(--font-weight-medium);
+	cursor: pointer;
+	user-select: none;
+	white-space: nowrap;
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease,
+		color 0.15s ease;
+
+	&[data-size="sm"] {
+		height: var(--control-input-height-sm);
+		padding: 0 var(--space-12);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	&[data-loading] {
+		cursor: progress;
+	}
+
+	&[data-variant="primary"] {
+		background-color: var(--control-primary-background-default);
+		border-color: var(--control-primary-border-default);
+		color: var(--control-primary-text-default);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover:not(:disabled) {
+				background-color: var(--control-primary-background-hover);
+				border-color: var(--control-primary-border-hover);
+				color: var(--control-primary-text-hover);
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: var(--control-primary-background-active);
+			border-color: var(--control-primary-border-active);
+			color: var(--control-primary-text-active);
+		}
+	}
+
+	&[data-variant="secondary"] {
+		background-color: var(--control-secondary-background-default);
+		border-color: var(--control-secondary-border-default);
+		color: var(--control-secondary-text-default);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover:not(:disabled) {
+				background-color: var(--control-secondary-background-hover);
+				border-color: var(--control-secondary-border-hover);
+				color: var(--control-secondary-text-hover);
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: var(--control-secondary-background-active);
+			border-color: var(--control-secondary-border-active);
+			color: var(--control-secondary-text-active);
+		}
+	}
+
+	&[data-variant="critical-primary"] {
+		background-color: var(--control-critical-primary-background-default);
+		border-color: var(--control-critical-primary-border-default);
+		color: var(--control-critical-primary-text-default);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover:not(:disabled) {
+				background-color: var(--control-critical-primary-background-hover);
+				border-color: var(--control-critical-primary-border-hover);
+				color: var(--control-critical-primary-text-hover);
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: var(--control-critical-primary-background-active);
+			border-color: var(--control-critical-primary-border-active);
+			color: var(--control-critical-primary-text-active);
+		}
+	}
+
+	&[data-variant="critical-secondary"] {
+		background-color: var(--control-critical-secondary-background-default);
+		border-color: var(--control-critical-secondary-border-default);
+		color: var(--control-critical-secondary-text-default);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover:not(:disabled) {
+				background-color: var(--control-critical-secondary-background-hover);
+				border-color: var(--control-critical-secondary-border-hover);
+				color: var(--control-critical-secondary-text-hover);
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: var(--control-critical-secondary-background-active);
+			border-color: var(--control-critical-secondary-border-active);
+			color: var(--control-critical-secondary-text-active);
+		}
+	}
+
+	&[data-variant="expressive"] {
+		background-color: var(--control-expressive-background-default);
+		border-color: var(--control-expressive-border-default);
+		color: var(--control-expressive-text-default);
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover:not(:disabled) {
+				background-color: var(--control-expressive-background-hover);
+				border-color: var(--control-expressive-border-hover);
+				color: var(--control-expressive-text-hover);
+			}
+		}
+
+		&:active:not(:disabled) {
+			background-color: var(--control-expressive-background-active);
+			border-color: var(--control-expressive-border-active);
+			color: var(--control-expressive-text-active);
+		}
+	}
+}
+
+/* ----- Shared floating close button (Modal header / Popover) ----- */
+
+/* The modal/popover close affordances are IconButton (variant icon-only, size md) — the same
+   40x40 control real Discord modals use. These classes are positioning hooks only; the button
+   carries its own geometry, colors, and states. */
+.mana-modal-close,
+.mana-popover-close {
+	flex: none;
+}
+
+/* ============================== Modal ============================== */
+
+.mana-modal-scrim {
+	position: fixed;
+	inset: 0;
+	background-color: var(--background-scrim);
+	transform: translateZ(0);
+	pointer-events: auto;
+}
+
+.mana-modal-positioner {
+	box-sizing: border-box;
+	position: fixed;
+	top: var(--mana-viewport-top, 0px);
+	left: var(--mana-viewport-left, 0px);
+	width: var(--mana-viewport-width, 100%);
+	height: var(--mana-viewport-height, 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--space-24);
+	pointer-events: none;
+}
+
+.mana-modal {
+	/* The 24px modal padding is split so adjoining sections add up to it:
+     each section pads 16px top (md) + 8px bottom (sm). */
+	--mana-modal-padding: var(--space-24);
+	--mana-modal-padding-sm: var(--space-8);
+	--mana-modal-padding-md: var(--space-16);
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	max-height: 100%;
+	padding-top: var(--mana-modal-padding-sm);
+	padding-bottom: var(--mana-modal-padding-md);
+	background: var(--background-surface-high);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-high);
+	color: var(--text-default);
+	pointer-events: auto;
+
+	&[data-size="sm"] {
+		max-width: 400px;
+		max-height: min(720px, 100%);
+	}
+
+	&[data-size="md"] {
+		max-width: 480px;
+		max-height: min(800px, 100%);
+	}
+
+	&[data-size="lg"] {
+		max-width: 680px;
+	}
+}
+
+.mana-modal-section {
+	box-sizing: border-box;
+	flex: 0 0 auto;
+	padding: var(--mana-modal-padding-md) var(--mana-modal-padding) var(--mana-modal-padding-sm);
+}
+
+.mana-modal-header {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-12);
+
+	&[data-align-center] {
+		text-align: center;
+
+		.mana-modal-header-main {
+			align-items: center;
+		}
+	}
+}
+
+.mana-modal-header-main {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-8);
+}
+
+.mana-modal-title {
+	margin: 0;
+	color: var(--text-strong);
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.mana-modal-subtitle {
+	color: var(--text-subtle);
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.mana-modal-header-trailing {
+	flex: none;
+	display: flex;
+	align-items: flex-start;
+	gap: var(--space-8);
+}
+
+/* Pull the close button so it sits 8px from the modal's top-right corner. */
+.mana-modal-header .mana-modal-close {
+	margin-top: calc(-1 * var(--mana-modal-padding-md));
+	margin-right: calc(-1 * (var(--mana-modal-padding) - var(--space-8)));
+}
+
+.mana-modal-notice {
+	box-sizing: border-box;
+	margin: var(--mana-modal-padding-md) var(--mana-modal-padding) 0;
+	padding: var(--space-8) var(--space-12);
+	border-radius: var(--radius-sm);
+	background-color: var(--background-feedback-critical);
+	color: var(--white);
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.mana-modal-body-controls {
+	box-sizing: border-box;
+	flex: 0 0 auto;
+	padding: var(--mana-modal-padding-md) var(--mana-modal-padding) 0;
+}
+
+.mana-modal-body {
+	box-sizing: border-box;
+	flex: 0 1 auto;
+	min-height: 1px;
+	overflow: hidden auto;
+	padding: var(--mana-modal-padding-md) var(--mana-modal-padding) var(--mana-modal-padding-sm);
+	overflow-wrap: break-word;
+	word-break: break-word;
+	scrollbar-width: thin;
+}
+
+.mana-modal-body-controls + .mana-modal-body {
+	padding-top: var(--space-12);
+}
+
+.mana-modal-body-text {
+	color: var(--text-subtle);
+}
+
+.mana-modal-footer {
+	padding-bottom: 0;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.mana-modal-action-bar {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--mana-modal-padding) var(--space-8);
+	align-items: center;
+}
+
+.mana-modal-action-bar-leading {
+	flex: 1 1 auto;
+	min-width: 0;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.mana-modal-action-bar-trailing {
+	flex: 0 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-8);
+	margin-left: auto;
+	max-width: 100%;
+
+	&[data-full-width] {
+		width: 100%;
+
+		/* Intentionally equal-width buttons */
+		.mana-overlay-button {
+			flex: 1;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-modal-scrim {
+		animation: mana-modal-scrim-in var(--motion-duration-fast) var(--motion-ease-out) both;
+	}
+
+	.mana-modal {
+		animation: mana-modal-in var(--motion-duration-fast) var(--motion-ease-out) both;
+	}
+
+	@keyframes mana-modal-scrim-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes mana-modal-in {
+		from {
+			opacity: 0;
+			transform: scale(0.96);
+		}
+	}
+}
+
+.mana-modal[data-animated="false"],
+.mana-modal-scrim[data-animated="false"] {
+	animation: none;
+}
+
+/* ============================== Popover ============================== */
+
+.mana-popover {
+	box-sizing: border-box;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	width: 240px;
+	max-width: 240px;
+	padding: var(--space-16);
+	gap: var(--space-16);
+	background: var(--background-surface-high);
+	box-shadow:
+		inset 0 0 0 1px var(--border-subtle),
+		var(--shadow-high);
+	border-radius: var(--radius-md);
+	text-align: center;
+	color: var(--text-default);
+}
+
+.mana-popover-close {
+	position: absolute;
+	top: var(--space-4);
+	inset-inline-end: var(--space-4);
+	z-index: 2;
+}
+
+.mana-popover-graphic {
+	width: 100%;
+	max-width: 144px;
+	margin: var(--space-16) auto var(--space-20);
+
+	& img,
+	& svg,
+	& video {
+		max-width: 100%;
+	}
+}
+
+.mana-popover-header {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-4);
+	margin: var(--space-20) 0;
+}
+
+/* When a graphic already provides top spacing, don't double it up. */
+.mana-popover-graphic + .mana-popover-header {
+	margin-top: 0;
+}
+
+.mana-popover-title {
+	margin: 0;
+	text-align: center;
+	text-wrap: pretty;
+	color: var(--text-strong);
+}
+
+.mana-popover-body {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	text-wrap: pretty;
+	color: var(--text-subtle);
+}
+
+.mana-popover-link {
+	margin: 0;
+	color: var(--text-link);
+	text-decoration: none;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}
+
+.mana-popover-action-bar {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	gap: var(--space-8);
+}
+
+/* Caret pointing at the anchor. data-side is the panel edge it sits on. */
+.mana-popover-caret {
+	--mana-caret-half-width: 11px;
+	--mana-caret-half-height: 7px;
+	--mana-caret-horizontal-distance: 18px;
+	--mana-caret-edge-offset-horizontal: 20px;
+	--mana-caret-edge-offset-vertical: 22px;
+	position: absolute;
+	pointer-events: none;
+	transform-origin: center;
+	line-height: 0;
+}
+
+.mana-popover-caret-fill {
+	fill: var(--background-surface-high);
+}
+
+.mana-popover-caret-stroke {
+	fill: none;
+	stroke: var(--border-subtle);
+	stroke-opacity: 1;
+}
+
+.mana-popover-caret[data-side="bottom"] {
+	top: calc(100% - 1px);
+	transform: rotate(0deg);
+}
+
+.mana-popover-caret[data-side="top"] {
+	bottom: calc(100% - 1px);
+	transform: rotate(180deg);
+}
+
+.mana-popover-caret[data-side="left"] {
+	inset-inline-start: calc(-1 * var(--mana-caret-horizontal-distance));
+	transform: rotate(90deg);
+}
+
+.mana-popover-caret[data-side="right"] {
+	inset-inline-end: calc(-1 * var(--mana-caret-horizontal-distance));
+	transform: rotate(-90deg);
+}
+
+/* Center along the edge by default */
+.mana-popover-caret[data-side="top"],
+.mana-popover-caret[data-side="bottom"] {
+	inset-inline-start: 50%;
+	margin-inline-start: calc(-1 * var(--mana-caret-half-width));
+}
+
+.mana-popover-caret[data-side="left"],
+.mana-popover-caret[data-side="right"] {
+	top: 50%;
+	margin-top: calc(-1 * var(--mana-caret-half-height));
+}
+
+/* Edge-aligned popovers keep the caret near the anchor edge */
+.mana-popover[data-align="start"] .mana-popover-caret[data-side="top"],
+.mana-popover[data-align="start"] .mana-popover-caret[data-side="bottom"] {
+	inset-inline-start: var(--mana-caret-edge-offset-horizontal);
+	margin-inline-start: 0;
+}
+
+.mana-popover[data-align="end"] .mana-popover-caret[data-side="top"],
+.mana-popover[data-align="end"] .mana-popover-caret[data-side="bottom"] {
+	inset-inline-start: auto;
+	inset-inline-end: var(--mana-caret-edge-offset-horizontal);
+	margin-inline-start: 0;
+}
+
+.mana-popover[data-align="start"] .mana-popover-caret[data-side="left"],
+.mana-popover[data-align="start"] .mana-popover-caret[data-side="right"] {
+	top: var(--mana-caret-edge-offset-vertical);
+	margin-top: calc(-1 * var(--mana-caret-half-height));
+}
+
+.mana-popover[data-align="end"] .mana-popover-caret[data-side="left"],
+.mana-popover[data-align="end"] .mana-popover-caret[data-side="right"] {
+	top: auto;
+	bottom: var(--mana-caret-edge-offset-vertical);
+	margin-top: 0;
+	margin-bottom: calc(-1 * var(--mana-caret-half-height));
+}
+
+/* pinCaret: JS sets --popover-caret-inset to the anchor center, relative to the panel. */
+.mana-popover[data-pin-caret] .mana-popover-caret[data-side="top"],
+.mana-popover[data-pin-caret] .mana-popover-caret[data-side="bottom"],
+.mana-popover[data-pin-caret][data-align="start"] .mana-popover-caret[data-side="top"],
+.mana-popover[data-pin-caret][data-align="start"] .mana-popover-caret[data-side="bottom"],
+.mana-popover[data-pin-caret][data-align="end"] .mana-popover-caret[data-side="top"],
+.mana-popover[data-pin-caret][data-align="end"] .mana-popover-caret[data-side="bottom"] {
+	inset-inline-start: var(--popover-caret-inset, 50%);
+	inset-inline-end: auto;
+	margin-inline-start: calc(-1 * var(--mana-caret-half-width));
+}
+
+.mana-popover[data-pin-caret] .mana-popover-caret[data-side="left"],
+.mana-popover[data-pin-caret] .mana-popover-caret[data-side="right"],
+.mana-popover[data-pin-caret][data-align="start"] .mana-popover-caret[data-side="left"],
+.mana-popover[data-pin-caret][data-align="start"] .mana-popover-caret[data-side="right"],
+.mana-popover[data-pin-caret][data-align="end"] .mana-popover-caret[data-side="left"],
+.mana-popover[data-pin-caret][data-align="end"] .mana-popover-caret[data-side="right"] {
+	top: var(--popover-caret-inset, 50%);
+	bottom: auto;
+	margin-top: calc(-1 * var(--mana-caret-half-height));
+	margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-popover {
+		animation: mana-popover-in var(--motion-duration-fast) var(--motion-ease-out) both;
+	}
+
+	.mana-popover[data-align="start"] {
+		--popover-origin: 0%;
+	}
+
+	.mana-popover[data-align="end"] {
+		--popover-origin: 100%;
+	}
+
+	.mana-popover[data-placement="top"] {
+		transform-origin: var(--popover-caret-inset, var(--popover-origin, 50%)) 100%;
+	}
+
+	.mana-popover[data-placement="bottom"] {
+		transform-origin: var(--popover-caret-inset, var(--popover-origin, 50%)) 0%;
+	}
+
+	.mana-popover[data-placement="left"] {
+		transform-origin: 100% var(--popover-caret-inset, var(--popover-origin, 50%));
+	}
+
+	.mana-popover[data-placement="right"] {
+		transform-origin: 0% var(--popover-caret-inset, var(--popover-origin, 50%));
+	}
+
+	@keyframes mana-popover-in {
+		from {
+			opacity: 0;
+			transform: scale(0.97);
+		}
+	}
+}
+
+/* ============================== Select ============================== */
+
+.mana-select-trigger {
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-4);
+	width: 100%;
+	max-width: var(--select-max-width);
+	min-height: var(--select-option-height);
+	padding: 0 var(--space-4) 0 var(--space-12);
+	background-color: var(--input-background-default);
+	border: 1px solid var(--input-border-default);
+	border-radius: var(--radius-sm);
+	color: var(--text-strong);
+	font-family: var(--font-primary);
+	text-align: start;
+	cursor: pointer;
+	transition: border-color 0.2s ease-out;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover:not(:disabled) {
+			border-color: var(--input-border-hover);
+		}
+	}
+
+	&[data-full-width] {
+		max-width: 100%;
+	}
+
+	&[data-invalid] {
+		border-color: var(--status-danger);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+}
+
+.mana-select-value {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	align-items: center;
+	gap: var(--space-8);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	&[data-placeholder] {
+		color: var(--input-placeholder-text-default);
+	}
+}
+
+.mana-select-value-leading {
+	display: inline-flex;
+	align-items: center;
+	flex: none;
+	color: var(--icon-subtle);
+}
+
+.mana-select-chevron {
+	flex: none;
+	margin-inline-end: var(--space-4);
+	color: var(--icon-strong);
+	transform: rotateX(0deg);
+}
+
+.mana-select-trigger[data-open] .mana-select-chevron {
+	transform: rotateX(180deg);
+}
+
+.mana-select-trigger:focus-visible,
+.mana-select-trigger[data-open] {
+	border-color: var(--input-border-active);
+	outline: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+	.mana-select-option:hover:not([aria-disabled="true"]) {
+		background-color: var(--background-mod-normal);
+	}
+}
+
+.mana-select-listbox {
+	box-sizing: border-box;
+	padding: var(--space-4);
+	background-color: var(--background-surface-higher);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-sm);
+	/* Mana uses `0 2px 8px 0 var(--opacity-black-16)`; token unavailable */
+	box-shadow: var(--shadow-high);
+	overflow-y: auto;
+	scrollbar-width: thin;
+}
+
+.mana-select-option {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: var(--space-4);
+	min-height: var(--select-option-height);
+	padding: calc(var(--space-4) - 1px) var(--space-4) calc(var(--space-4) - 1px) var(--space-8);
+	border-radius: var(--radius-xs);
+	background-color: transparent;
+	color: var(--text-strong);
+	cursor: pointer;
+	transition: background-color 50ms ease-in;
+
+	&[data-active] {
+		background-color: var(--background-mod-normal);
+		transition: background-color 150ms ease-out;
+	}
+
+	&[aria-disabled="true"] {
+		opacity: 0.5;
+		background-color: transparent;
+		cursor: default;
+	}
+}
+
+.mana-select-option-leading {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	width: 32px;
+	height: 32px;
+	padding: var(--space-4);
+	margin-inline-start: calc(-1 * var(--space-8));
+	color: var(--icon-subtle);
+}
+
+.mana-select-option-text {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.mana-select-option-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mana-select-option-description {
+	color: var(--text-subtle);
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mana-select-option-trailing {
+	display: flex;
+	align-items: center;
+	flex: none;
+	color: var(--text-subtle);
+}
+
+.mana-select-option-check {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex: none;
+	min-width: 24px;
+	padding: var(--space-4);
+	color: var(--text-strong);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-select-chevron {
+		transition: transform 0.2s ease-out;
+	}
+
+	.mana-select-listbox {
+		animation: mana-select-listbox-in 150ms ease-out both;
+	}
+
+	@keyframes mana-select-listbox-in {
+		from {
+			opacity: 0;
+			transform: translateY(-4px);
+		}
+	}
+}
+
+/* ============================== Menu ============================== */
+
+.mana-menu {
+	box-sizing: border-box;
+	min-width: 188px;
+	max-width: 320px;
+	max-height: calc(100vh - 32px);
+	overflow-y: auto;
+	padding: var(--space-8);
+	background-color: var(--background-surface-higher);
+	border: 1px solid var(--border-subtle);
+	border-radius: 8px;
+	box-shadow: var(--shadow-high);
+	color: var(--interactive-text-default);
+	cursor: default;
+	outline: none;
+	scrollbar-width: thin;
+}
+
+.mana-menu-item {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	min-height: 32px;
+	margin: 0;
+	padding: var(--space-8);
+	border-radius: 2px;
+	color: var(--interactive-text-default);
+	cursor: pointer;
+	outline: none;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover:not([aria-disabled="true"]) {
+			background-color: var(--background-mod-subtle);
+		}
+	}
+
+	&:focus {
+		background-color: var(--interactive-background-hover);
+		border-radius: var(--radius-xs);
+	}
+
+	&:active:not([aria-disabled="true"]) {
+		background-color: var(--background-mod-subtle);
+	}
+
+	&[aria-disabled="true"] {
+		opacity: 0.5;
+		cursor: default;
+	}
+}
+
+.mana-menu-item-icon {
+	flex: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	margin-inline-end: var(--space-8);
+}
+
+.mana-menu-item-label {
+	flex: 1 1 auto;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.mana-menu-item-label-text {
+	color: var(--text-strong);
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.mana-menu-item-subtext {
+	margin-top: 2px;
+	color: var(--text-muted);
+	white-space: normal;
+}
+
+.mana-menu-item-trailing {
+	flex: none;
+	display: flex;
+	align-items: center;
+	margin-inline-start: var(--space-8);
+}
+
+.mana-menu-item[data-variant="danger"] {
+	color: var(--text-feedback-critical);
+
+	.mana-menu-item-label-text {
+		color: var(--text-feedback-critical);
+	}
+
+	&:focus,
+	&:active:not([aria-disabled="true"]) {
+		background-color: var(--background-feedback-critical);
+	}
+}
+
+.mana-menu-checkbox {
+	flex: none;
+	display: flex;
+	align-items: center;
+	margin-inline-end: var(--space-12);
+}
+
+.mana-menu-group-label {
+	display: flex;
+	align-items: center;
+	min-height: 32px;
+	padding: var(--space-8);
+	font-family: var(--font-display);
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 500;
+	color: var(--text-muted);
+}
+
+.mana-menu-separator {
+	box-sizing: border-box;
+	border-bottom: 1px solid var(--border-subtle);
+	margin: var(--space-8);
+}
+
+.mana-menu-positioner > .mana-menu {
+	opacity: 0;
+}
+
+.mana-menu-positioner[data-open="true"] > .mana-menu {
+	opacity: 1;
+}
+
+.mana-menu-positioner[data-motion] > .mana-menu {
+	transition: opacity var(--motion-duration-quick) var(--motion-ease-out);
+}
+
+@starting-style {
+	.mana-menu-positioner[data-motion][data-open="true"] > .mana-menu {
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-menu-positioner[data-motion] > .mana-menu {
+		transform: scale(0.98);
+		transition:
+			transform var(--motion-duration-quick) var(--motion-ease-out),
+			opacity var(--motion-duration-quick) var(--motion-ease-out);
+	}
+
+	.mana-menu-positioner[data-open="true"] > .mana-menu {
+		transform: none;
+	}
+
+	@starting-style {
+		.mana-menu-positioner[data-motion][data-open="true"] > .mana-menu {
+			transform: scale(0.98);
+		}
+	}
+}
+
+/* ===== heavy ===== */
+
+/* ==========================================================================
+   heavy fragment — Combobox, Calendar/RangeCalendar, DatePicker, Table
+   ========================================================================== */
+
+/* --- Combobox ----------------------------------------------------------- */
+
+.mana-combobox {
+	position: relative;
+	width: 100%;
+
+	&[data-disabled] {
+		opacity: 0.5;
+		cursor: not-allowed;
+
+		& .mana-combobox-control {
+			cursor: not-allowed;
+		}
+	}
+}
+
+.mana-combobox-control {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-4);
+	box-sizing: border-box;
+	min-height: var(--control-input-height-md);
+	padding: var(--space-4) var(--space-8);
+	background-color: var(--input-background-default);
+	border: 1px solid var(--input-border-default);
+	border-radius: var(--radius-sm);
+	cursor: text;
+	transition: border-color 150ms ease;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			border-color: var(--input-border-hover);
+		}
+	}
+
+	&:focus-within,
+	&[data-open] {
+		border-color: var(--input-border-active);
+	}
+
+	&[data-invalid] {
+		background-color: var(--input-background-error-default);
+		border-color: var(--input-border-error-default);
+	}
+}
+
+.mana-combobox-input {
+	flex: 1;
+	min-width: 64px;
+	border: none;
+	background: transparent;
+	padding: 0;
+	font: inherit;
+	color: var(--input-text-default);
+
+	&:focus,
+	&:focus-visible {
+		outline: none;
+	}
+
+	&::placeholder {
+		color: var(--input-placeholder-text-default);
+	}
+}
+
+.mana-combobox-caret {
+	display: flex;
+	align-items: center;
+	margin-inline-start: auto;
+	color: var(--input-icon-default);
+	flex-shrink: 0;
+}
+
+.mana-combobox[data-disabled] .mana-combobox-caret {
+	color: var(--interactive-muted);
+}
+
+.mana-combobox-tag {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-4);
+	max-width: 100%;
+	padding: 2px var(--space-4) 2px var(--space-8);
+	border-radius: var(--radius-xs);
+	background-color: var(--chip-gray-medium-background);
+	color: var(--chip-gray-medium-text);
+	font-size: 12px;
+	font-weight: var(--font-weight-medium);
+	line-height: 16px;
+}
+
+.mana-combobox-tag-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mana-combobox-tag-remove {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px;
+	margin: 0;
+	border: none;
+	border-radius: var(--radius-xs);
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			background-color: var(--background-mod-strong);
+		}
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+}
+
+.mana-combobox-popout {
+	box-sizing: border-box;
+	background-color: var(--background-surface-higher);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-high);
+	overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-combobox-popout {
+		animation: mana-combobox-in 100ms ease;
+	}
+
+	@keyframes mana-combobox-in {
+		from {
+			opacity: 0.5;
+			transform: scaleY(0.96);
+		}
+	}
+}
+
+.mana-combobox-listbox {
+	list-style: none;
+	margin: 0;
+	padding: var(--space-4);
+	max-height: 288px;
+	overflow-y: auto;
+}
+
+.mana-combobox-option {
+	display: flex;
+	align-items: center;
+	gap: var(--space-8);
+	min-height: var(--control-item-height-md);
+	box-sizing: border-box;
+	padding: var(--space-8);
+	border-radius: var(--radius-sm);
+	color: var(--interactive-text-default);
+	font-weight: var(--font-weight-medium);
+	cursor: pointer;
+
+	&[data-active] {
+		background-color: var(--interactive-background-hover);
+		color: var(--interactive-text-hover);
+	}
+
+	&[data-selected] {
+		background-color: var(--interactive-background-selected);
+	}
+
+	&[data-selected][data-active] {
+		background-color: var(--interactive-background-hover);
+	}
+
+	&[data-disabled] {
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+}
+
+.mana-combobox-option-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.mana-combobox-empty {
+	padding: var(--space-16) var(--space-8);
+	text-align: center;
+	color: var(--text-muted);
+}
+
+/* --- Calendar / RangeCalendar ------------------------------------------- */
+
+.mana-calendar {
+	width: fit-content;
+	box-sizing: border-box;
+	padding: var(--space-12) var(--space-8);
+	color: var(--text-default);
+
+	&[data-disabled] {
+		opacity: 0.5;
+	}
+}
+
+.mana-calendar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-8);
+	margin-bottom: var(--space-8);
+}
+
+.mana-calendar-heading {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.25;
+	font-weight: var(--font-weight-semibold);
+	color: var(--text-strong);
+}
+
+.mana-calendar-nav-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	margin: 0;
+	border: none;
+	border-radius: var(--radius-xs);
+	background: transparent;
+	color: var(--control-icon-only-icon-default);
+	cursor: pointer;
+	transition:
+		background-color 150ms ease,
+		color 150ms ease;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover:not(:disabled) {
+			color: var(--control-icon-only-icon-hover);
+			background-color: var(--control-icon-only-background-hover);
+		}
+	}
+
+	&:active:not(:disabled) {
+		color: var(--control-icon-only-icon-active);
+		background-color: var(--control-icon-only-background-active);
+	}
+
+	&:disabled {
+		cursor: not-allowed;
+		color: var(--interactive-muted);
+	}
+}
+
+.mana-calendar-grid {
+	border-collapse: separate;
+	border-spacing: 0 var(--space-4);
+	width: 100%;
+}
+
+.mana-calendar-weekday {
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	vertical-align: middle;
+	font-size: 14px;
+	font-weight: var(--font-weight-normal);
+	color: var(--text-muted);
+}
+
+.mana-calendar-cell {
+	position: relative;
+	box-sizing: border-box;
+	height: 40px;
+	width: 40px;
+	padding: 0;
+	border-radius: var(--radius-sm);
+	text-align: center;
+	cursor: pointer;
+
+	&:focus-visible {
+		outline: none;
+		z-index: 3;
+
+		& .mana-calendar-cell-content {
+			outline: 2px solid var(--border-focus);
+			outline-offset: 2px;
+		}
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover:not([data-disabled]):not([data-selected]) {
+			background-color: var(--background-mod-subtle);
+		}
+	}
+
+	&[data-selected] {
+		background-color: var(--control-primary-background-default);
+		color: var(--control-primary-text-default);
+	}
+
+	&[data-outside-month] {
+		color: var(--text-muted);
+		opacity: 0.5;
+	}
+
+	&[data-disabled] {
+		color: var(--text-muted);
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+.mana-calendar-cell-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	border-radius: var(--radius-sm);
+	font-size: 16px;
+	transition: background-color 150ms ease;
+}
+
+/* Range selection: middles get the translucent band, ends get solid pills. */
+.mana-calendar-cell-range {
+	&[data-selected] {
+		background-color: var(--datepicker-range-background-default);
+		color: var(--text-strong);
+		border-radius: 0;
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				background-color: var(--datepicker-range-background-hover);
+			}
+		}
+	}
+
+	&[data-range-start],
+	&[data-range-end] {
+		& .mana-calendar-cell-content {
+			background-color: var(--control-primary-background-default);
+			color: var(--control-primary-text-default);
+			border: 1px solid var(--control-primary-border-default);
+			border-radius: calc(var(--radius-sm) - 1px);
+		}
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover .mana-calendar-cell-content {
+				background-color: var(--control-primary-background-hover);
+				color: var(--control-primary-text-hover);
+				border-color: var(--control-primary-border-hover);
+			}
+		}
+
+		&:active .mana-calendar-cell-content {
+			background-color: var(--control-primary-background-active);
+			color: var(--control-primary-text-active);
+		}
+	}
+
+	&[data-range-start] {
+		border-top-left-radius: var(--radius-sm);
+		border-bottom-left-radius: var(--radius-sm);
+	}
+
+	&[data-range-end] {
+		border-top-right-radius: var(--radius-sm);
+		border-bottom-right-radius: var(--radius-sm);
+	}
+}
+
+.mana-calendar-grid td:first-child[data-selected] {
+	border-top-left-radius: var(--radius-sm);
+	border-bottom-left-radius: var(--radius-sm);
+}
+
+.mana-calendar-grid td:last-child[data-selected] {
+	border-top-right-radius: var(--radius-sm);
+	border-bottom-right-radius: var(--radius-sm);
+}
+
+/* --- DatePicker / DateRangePicker ---------------------------------------- */
+
+.mana-datepicker {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+	width: fit-content;
+	min-width: 200px;
+}
+
+.mana-datepicker-label {
+	font-size: 14px;
+	line-height: 1.3;
+	font-weight: var(--font-weight-semibold);
+	color: var(--text-default);
+}
+
+.mana-datepicker-required {
+	color: var(--text-feedback-critical);
+	padding-inline-start: var(--space-4);
+}
+
+.mana-datepicker-trigger {
+	display: flex;
+	align-items: center;
+	gap: var(--space-8);
+	box-sizing: border-box;
+	height: var(--control-input-height-md);
+	padding: 0 var(--space-8);
+	border: 1px solid var(--input-border-default);
+	border-radius: var(--radius-sm);
+	background-color: var(--input-background-default);
+	color: var(--input-text-default);
+	font: inherit;
+	text-align: start;
+	cursor: pointer;
+	transition: border-color 150ms ease;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover:not(:disabled) {
+			border-color: var(--input-border-hover);
+		}
+	}
+
+	&[data-open] {
+		border-color: var(--input-border-active);
+	}
+
+	&[data-invalid] {
+		background-color: var(--input-background-error-default);
+		border-color: var(--input-border-error-default);
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+.mana-datepicker-icon {
+	color: var(--input-icon-default);
+	flex-shrink: 0;
+}
+
+.mana-datepicker-value {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+
+	&[data-placeholder] {
+		color: var(--input-placeholder-text-default);
+	}
+}
+
+.mana-datepicker-description {
+	font-size: 12px;
+	line-height: 1.3;
+	color: var(--text-muted);
+}
+
+.mana-datepicker-error {
+	font-size: 12px;
+	line-height: 1.3;
+	color: var(--text-feedback-critical);
+}
+
+.mana-datepicker-panel {
+	box-sizing: border-box;
+	background-color: var(--background-surface-higher);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-sm);
+	box-shadow: var(--shadow-high);
+	overflow: auto;
+	max-height: calc(100vh - var(--space-16));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.mana-datepicker-panel {
+		animation: mana-datepicker-in 100ms ease;
+	}
+
+	@keyframes mana-datepicker-in {
+		from {
+			opacity: 0.5;
+			transform: scaleY(0.96);
+		}
+	}
+}
+
+/* --- Table ---------------------------------------------------------------- */
+
+.mana-table-container {
+	box-sizing: border-box;
+	width: 100%;
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-sm);
+	background-color: var(--background-mod-muted);
+	overflow-x: auto;
+
+	&[data-sticky-header] {
+		overflow-y: auto;
+	}
+}
+
+.mana-table {
+	width: 100%;
+	border-collapse: collapse;
+	color: var(--text-default);
+}
+
+.mana-table-header {
+	border-bottom: 1px solid var(--border-subtle);
+}
+
+.mana-table-container[data-sticky-header] .mana-table-column {
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background-color: var(--background-surface-high);
+}
+
+.mana-table-row {
+	border-bottom: 1px solid var(--border-subtle);
+	white-space: nowrap;
+	transition: background-color 0.1s ease;
+
+	&:last-child {
+		border-bottom: none;
+	}
+}
+
+.mana-table-body .mana-table-row {
+	&[data-interactive] {
+		cursor: pointer;
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover {
+				background-color: var(--interactive-background-hover);
+			}
+		}
+
+		&:active {
+			background-color: var(--interactive-background-active);
+		}
+	}
+
+	&[data-selected] {
+		background-color: var(--interactive-background-selected);
+	}
+}
+
+.mana-table-column {
+	box-sizing: border-box;
+	padding: var(--space-16);
+	text-align: start;
+	vertical-align: middle;
+}
+
+.mana-table-column-label {
+	display: inline-block;
+	font-size: 12px;
+	line-height: 1.3;
+	font-weight: var(--font-weight-semibold);
+	letter-spacing: 0.24px;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+.mana-table-sort-button {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-4);
+	padding: 0;
+	margin: 0;
+	border: none;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	cursor: pointer;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover .mana-table-column-label {
+			color: var(--interactive-text-hover);
+		}
+	}
+}
+
+.mana-table-column[data-sorted] .mana-table-column-label {
+	color: var(--text-strong);
+}
+
+.mana-table-sort-icon {
+	color: var(--text-strong);
+	flex-shrink: 0;
+}
+
+.mana-table-cell {
+	box-sizing: border-box;
+	padding: var(--space-16);
+	vertical-align: middle;
+}

@@ -1,0 +1,53 @@
+/* Page layout only — all component styling comes from mana/*.css (dark theme tokens). */
+:root { color-scheme: dark; }
+main { max-width: 560px; margin: 0 auto; padding: var(--space-24) var(--space-16) var(--space-64); display: flex; flex-direction: column; gap: var(--space-16); }
+[hidden] { display: none !important; }
+h1 { color: var(--text-strong); margin: 0; }
+.note, .meta-line, .picked-list { color: var(--text-muted); }
+.note b, .static-value { color: var(--text-strong); }
+.panel { display: flex; flex-direction: column; gap: var(--space-16); padding: var(--space-16); }
+.mana-button[data-full-width] { width: 100%; }
+.mana-button[data-size="md"] { min-height: var(--control-input-height-md); }
+.mana-button-contents { width: 100%; justify-content: center; }
+a.mana-button { text-decoration: none; }
+.mana-select-trigger { position: relative; padding: 0; }
+.select-native {
+  appearance: none; -webkit-appearance: none; flex: 1; min-width: 0; align-self: stretch;
+  background: transparent; border: 0; color: inherit; font-family: inherit;
+  padding: 0 var(--space-32) 0 var(--space-12); cursor: pointer; outline: none;
+}
+.select-native option { background: var(--background-base-low); color: var(--text-default); }
+.mana-select-chevron { position: absolute; right: var(--space-8); pointer-events: none; margin: 0; }
+.mana-select-trigger:focus-within { border-color: var(--input-border-active); }
+.static-value { display: flex; align-items: center; min-height: var(--control-input-height-md); }
+.mana-tabbar { margin-top: var(--space-4); }
+
+.dropzone {
+  display: flex; flex-direction: column; gap: var(--space-4); text-align: center; cursor: pointer;
+  padding: var(--space-24) var(--space-16); border: 2px dashed var(--border-normal); border-radius: var(--radius-sm);
+  color: var(--text-muted); transition: border-color .15s, background-color .15s;
+}
+.dropzone strong { color: var(--text-strong); }
+.dropzone:hover, .dropzone.drag, .dropzone:focus-within { border-color: var(--input-border-active); background: var(--background-mod-subtle); }
+.picked-list { list-style: none; padding: 0; margin: 0; }
+.picked-list li { display: flex; justify-content: space-between; gap: var(--space-8); padding: var(--space-4) 0; border-bottom: 1px solid var(--border-subtle); }
+.picked-list li:last-child { border-bottom: 0; }
+
+ol.steps { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: var(--space-12); }
+ol.steps li { display: grid; grid-template-columns: 1fr auto; gap: var(--space-4) var(--space-8); }
+ol.steps .mana-progressbar { grid-column: 1 / -1; }
+.state { color: var(--text-muted); font-variant-numeric: tabular-nums; }
+.done .state { color: var(--text-feedback-positive); }
+.fail .state { color: var(--text-feedback-critical); }
+.fail .mana-progressbar-fill { background-color: var(--status-danger); }
+.done .mana-progressbar-fill { background-color: var(--status-positive); }
+pre {
+  font: 12px/1.45 var(--font-code); white-space: pre-wrap; word-break: break-word; color: var(--text-muted);
+  margin: var(--space-16) 0 0; padding-top: var(--space-12); border-top: 1px solid var(--border-subtle); max-height: 220px; overflow: auto;
+}
+code { font-family: var(--font-code); font-size: .9em; color: var(--text-default); }
+.note { margin: var(--space-12) 0 0; }
+ul.links { padding-left: var(--space-20); margin: var(--space-8) 0 var(--space-12); }
+a:not(.mana-button) { color: var(--text-link); }
+.meta-line { margin: var(--space-8) 0 0; }
+.mana-tag { min-height: 28px; padding: var(--space-4) var(--space-10); }

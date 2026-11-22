@@ -1,384 +1,104 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="theme-dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#1a1a1e">
 <title>Cinder Mobile — Web Patcher</title>
 <meta name="description" content="Patch Discord Phoenix with Cinder live in your browser: native runtime, Mana UI SDK, access unlock, and DevTools — nothing uploaded.">
-<style>
-  :root {
-    color-scheme: light dark;
-    --bg: #f6f6f8;
-    --card: #ffffff;
-    --subtle: #efeff3;
-    --fg: #17171c;
-    --mut: #656572;
-    --line: #e2e2e8;
-    --acc: #e85d26;
-    --acc-hover: #cf4e1b;
-    --ok: #1f8a4c;
-    --err: #c2353a;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #111214;
-      --card: #1b1c20;
-      --subtle: #23252b;
-      --fg: #ececf1;
-      --mut: #9a9aa6;
-      --line: #2c2d34;
-      --acc: #f26b33;
-      --acc-hover: #ff7f4a;
-      --ok: #3fb977;
-      --err: #ef6b6f;
-    }
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    background: var(--bg);
-    color: var(--fg);
-  }
-  main {
-    max-width: 560px;
-    margin: 0 auto;
-    padding: 24px 16px 56px;
-  }
-  header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 4px 0 8px;
-  }
-  .badge {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #ff7a3c, #d94616);
-    display: grid;
-    place-items: center;
-    color: #fff;
-    font-weight: 800;
-    font-size: 20px;
-    flex-shrink: 0;
-    box-shadow: 0 2px 10px rgba(232, 93, 38, .3);
-  }
-  h1 {
-    font-size: 25px;
-    margin: 0;
-    letter-spacing: -0.02em;
-    line-height: 1.2;
-  }
-  .sub {
-    font-size: 13px;
-    color: var(--mut);
-    margin: 2px 0 0;
-  }
-  .lede {
-    color: var(--mut);
-    margin: 12px 0 20px;
-    font-size: 15px;
-  }
-  .tabs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4px;
-    background: var(--subtle);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 4px;
-    margin: 0 0 14px;
-  }
-  .tabs button {
-    padding: 9px 12px;
-    border-radius: 9px;
-    background: transparent;
-    color: var(--mut);
-    font-weight: 600;
-    font-size: 14px;
-    transition: background .15s, color .15s;
-  }
-  .tabs button[aria-selected="true"] {
-    background: var(--card);
-    color: var(--fg);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
-  }
-  .card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 16px;
-    margin: 0 0 14px;
-  }
-  .row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .row:first-child { padding-top: 2px; }
-  .row:last-child { border-bottom: 0; padding-bottom: 2px; }
-  .row label { color: var(--mut); font-size: 15px; }
-  .row > span { font-size: 15px; text-align: right; }
-  select {
-    -webkit-appearance: none;
-    appearance: none;
-    font: inherit;
-    font-size: 15px;
-    color: var(--fg);
-    background-color: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 8px 34px 8px 12px;
-    min-width: 0;
-    max-width: 62%;
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%239a9aa6' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    transition: border-color .15s;
-  }
-  select:hover, select:focus { border-color: var(--acc); outline: none; }
-  input[type=text] {
-    font: inherit;
-    font-size: 15px;
-    color: var(--fg);
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    padding: 8px 12px;
-    min-width: 0;
-    width: 62%;
-    text-align: right;
-    transition: border-color .15s;
-  }
-  input[type=text]:hover, input[type=text]:focus { border-color: var(--acc); outline: none; }
-  input[type=text][aria-invalid="true"] { border-color: var(--err); }
-  option { background: var(--card); color: var(--fg); }
-
-  .dropzone {
-    border: 2px dashed var(--line);
-    border-radius: 12px;
-    padding: 22px 16px;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color .15s, background .15s;
-    margin-bottom: 12px;
-  }
-  .dropzone:hover, .dropzone.drag {
-    border-color: var(--acc);
-    background: var(--subtle);
-  }
-  .dropzone strong { display: block; font-size: 15px; margin-bottom: 4px; }
-  .dropzone span { display: block; font-size: 13px; color: var(--mut); }
-  .dropzone input[type=file] { display: none; }
-  .picked-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 10px;
-    font-size: 13px;
-    color: var(--mut);
-  }
-  .picked-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 4px 0;
-    border-bottom: 1px solid var(--line);
-  }
-  .picked-list li:last-child { border-bottom: 0; }
-  .picked-list code { color: var(--fg); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
-
-  button, .btn {
-    display: block;
-    width: 100%;
-    font: inherit;
-    font-weight: 600;
-    padding: 14px;
-    border: 0;
-    border-radius: 12px;
-    background: var(--acc);
-    color: #fff;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background .15s, opacity .15s;
-  }
-  button:hover:not(:disabled), .btn:hover { background: var(--acc-hover); }
-  button:disabled { opacity: 0.5; cursor: default; }
-
-  .pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin: 0 0 14px;
-  }
-  .pill {
-    font-size: 12px;
-    color: var(--mut);
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    padding: 4px 10px;
-  }
-
-  ol.steps {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-  }
-  ol.steps li {
-    padding: 6px 0;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 4px 8px;
-  }
-  ol.steps li .bar {
-    grid-column: 1 / -1;
-    height: 4px;
-    background: var(--line);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  ol.steps li .bar i {
-    display: block;
-    height: 100%;
-    width: 0;
-    background: var(--acc);
-    transition: width .18s;
-  }
-  .state { color: var(--mut); font-variant-numeric: tabular-nums; }
-  .done .state { color: var(--ok); }
-  .fail .state { color: var(--err); }
-  pre {
-    font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
-    white-space: pre-wrap;
-    word-break: break-word;
-    color: var(--mut);
-    margin: 12px 0 0;
-    padding-top: 10px;
-    border-top: 1px solid var(--line);
-    max-height: 220px;
-    overflow: auto;
-  }
-  .note { font-size: 14px; color: var(--mut); margin: 12px 0 0; }
-  .note b { color: var(--fg); }
-  .err { color: var(--err); font-size: 14px; margin: 10px 4px; }
-  ul.links { padding-left: 18px; font-size: 14px; margin: 10px 0 12px; }
-  ul.links li { margin: 4px 0; }
-  a { color: var(--acc); }
-  [hidden] { display: none !important; }
-  .meta-line {
-    font-size: 13px;
-    color: var(--mut);
-    margin-top: 18px;
-  }
-</style>
+<link rel="stylesheet" href="mana/fonts.css">
+<link rel="stylesheet" href="mana/reset.css">
+<link rel="stylesheet" href="mana/tokens.css">
+<link rel="stylesheet" href="mana/mana.css">
+<link rel="stylesheet" href="page.css">
 </head>
 <body>
 <main>
-  <header>
-    <div class="badge" aria-hidden="true">C</div>
-    <div>
-      <h1>Cinder Mobile</h1>
-      <p class="sub">In-browser Discord Phoenix APK patcher</p>
-    </div>
-  </header>
+  <h1 class="mana-heading-xl-bold">Cinder Mobile</h1>
 
-  <p class="lede">
-    Patches Discord Phoenix live in your browser with the Cinder native runtime, Mana UI SDK,
-    access gate unlock, and DevTools — signed and ready to install. Nothing is uploaded.
-  </p>
-
-  <div class="pills" aria-label="Included patches">
-    <span class="pill">Native Runtime</span>
-    <span class="pill">Mana UI SDK</span>
-    <span class="pill">Access Unlock</span>
-    <span class="pill">Staff / DevTools</span>
-    <span class="pill">16 KiB Aligned</span>
-    <span class="pill">APK v2 Signed</span>
+  <div class="mana-tag-group" aria-label="Included patches">
+    <span class="mana-tag mana-text-sm-medium">Native Runtime</span>
+    <span class="mana-tag mana-text-sm-medium">Mana UI SDK</span>
+    <span class="mana-tag mana-text-sm-medium">Access Unlock</span>
+    <span class="mana-tag mana-text-sm-medium">Staff / DevTools</span>
+    <span class="mana-tag mana-text-sm-medium">16 KiB Aligned</span>
+    <span class="mana-tag mana-text-sm-medium">APK v2 Signed</span>
   </div>
 
-  <div class="tabs" role="tablist" aria-label="APK source">
-    <button type="button" id="tab-download" role="tab" aria-selected="true">Download Discord</button>
-    <button type="button" id="tab-local" role="tab" aria-selected="false">Local APK</button>
-  </div>
+  <nav class="mana-tabbar" data-type="top" role="tablist" aria-label="APK source">
+    <button type="button" class="mana-tabbar-item mana-text-md-medium" id="tab-download" role="tab" aria-selected="true" data-selected>Download Discord</button>
+    <button type="button" class="mana-tabbar-item mana-text-md-medium" id="tab-local" role="tab" aria-selected="false">Local APK</button>
+  </nav>
 
   <!-- Mode 1: Download Discord Alpha splits from tracker -->
-  <section class="card" id="panel-download">
-    <div class="row">
-      <label for="ver">Discord build</label>
-      <select id="ver"></select>
+  <section class="mana-card panel" data-type="primary" id="panel-download">
+    <div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="ver">Discord build</label></div>
+      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="ver"></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
     </div>
-    <div class="row">
-      <label for="dpi">Screen density</label>
-      <select id="dpi"></select>
+    <div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="dpi">Screen density</label></div>
+      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="dpi"></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
     </div>
-    <div class="row">
-      <label for="lang">Language</label>
-      <select id="lang"></select>
+    <div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="lang">Language</label></div>
+      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="lang"></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
     </div>
-    <div class="row">
-      <label for="mode">Install</label>
-      <select id="mode">
-        <option value="side" selected>Next to Discord</option>
-        <option value="replace">Replace Discord</option>
-      </select>
+    <div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="mode">Install</label></div>
+      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="mode"><option value="side" selected>Next to Discord</option><option value="replace">Replace Discord</option></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
     </div>
-    <div class="row" id="pkg-row">
-      <label for="pkg">Package name</label>
-      <input type="text" id="pkg" value="com.discord.release" spellcheck="false" autocapitalize="off" autocomplete="off">
-    </div>
-    <div class="row">
-      <label>CPU</label>
-      <span>arm64 (64-bit Android)</span>
+    <div id="pkg-row"><div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="pkg">Package name</label></div>
+      <div class="mana-field-control"><span class="mana-input" data-size="md"><input class="mana-input-native mana-text-md-normal" type="text" id="pkg" value="com.discord.release" spellcheck="false" autocapitalize="off" autocomplete="off"></span></div>
+    </div></div>
+    <div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold">CPU</label></div>
+      <div class="mana-field-control"><span class="mana-text-md-normal static-value">arm64 (64-bit Android)</span></div>
     </div>
   </section>
 
   <!-- Mode 2: Local APK / split upload -->
-  <section class="card" id="panel-local" hidden>
+  <section class="mana-card panel" data-type="primary" id="panel-local" hidden>
     <label class="dropzone" id="dropzone">
-      <input type="file" id="local-files" multiple accept=".apk,application/vnd.android.package-archive,application/octet-stream">
-      <strong>Pick or drop Discord APK file(s)</strong>
-      <span>Supports a standalone monolithic APK (e.g. <code>discord-mobile.apk</code>) or Play Store splits (<code>base.apk</code> + <code>config.arm64_v8a.apk</code> + density/lang).</span>
+      <input type="file" id="local-files" multiple accept=".apk,application/vnd.android.package-archive,application/octet-stream" class="mana-visually-hidden">
+      <strong class="mana-text-md-semibold">Pick or drop Discord APK file(s)</strong>
+      <span class="mana-text-sm-normal">Supports a standalone monolithic APK (e.g. <code>discord-mobile.apk</code>) or Play Store splits (<code>base.apk</code> + <code>config.arm64_v8a.apk</code> + density/lang).</span>
     </label>
-    <ul class="picked-list" id="local-list" hidden></ul>
-    <div class="row">
-      <label for="local-mode">Package</label>
-      <select id="local-mode">
-        <option value="keep" selected>Keep original package</option>
-        <option value="rename">Custom package name</option>
-      </select>
+    <ul class="picked-list mana-text-sm-normal" id="local-list" hidden></ul>
+    <div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="local-mode">Package</label></div>
+      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="local-mode"><option value="keep" selected>Keep original package</option><option value="rename">Custom package name</option></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
     </div>
-    <div class="row" id="local-pkg-row" hidden>
-      <label for="local-pkg">Package name</label>
-      <input type="text" id="local-pkg" value="com.discord.release" spellcheck="false" autocapitalize="off" autocomplete="off">
-    </div>
+    <div id="local-pkg-row" hidden><div class="mana-field">
+      <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="local-pkg">Package name</label></div>
+      <div class="mana-field-control"><span class="mana-input" data-size="md"><input class="mana-input-native mana-text-md-normal" type="text" id="local-pkg" value="com.discord.release" spellcheck="false" autocapitalize="off" autocomplete="off"></span></div>
+    </div></div>
   </section>
 
-  <button type="button" id="go">Patch &amp; Build APK</button>
-  <p class="err" id="err" hidden></p>
+  <button type="button" class="mana-button" data-variant="primary" data-size="md" data-full-width data-has-text id="go"><span class="mana-button-contents"><span class="mana-button-children mana-text-md-medium"><span class="mana-button-text">Patch &amp; Build APK</span></span></span></button>
+  <div class="mana-inline-notice" data-type="critical" id="err" role="alert" hidden>
+    <div class="mana-inline-notice-inner"><span class="mana-inline-notice-text mana-text-sm-medium" id="err-text"></span></div>
+  </div>
 
-  <section class="card" id="progress" hidden>
+  <section class="mana-card panel" data-type="primary" id="progress" hidden>
     <ol class="steps" id="steps"></ol>
     <pre id="log"></pre>
   </section>
 
-  <section class="card" id="manual" hidden>
-    <p class="note" style="margin-top:0">
+  <section class="mana-card panel" data-type="primary" id="manual" hidden>
+    <p class="mana-text-sm-normal note" style="margin-top:0">
       <b>Automatic download isn't available</b> (no CORS proxy configured or download was blocked).
       Download these splits, then pick all of them below:
     </p>
-    <ul class="links" id="links"></ul>
+    <ul class="links mana-text-sm-normal" id="links"></ul>
     <input type="file" id="manual-files" multiple accept=".apk,application/vnd.android.package-archive,application/octet-stream">
   </section>
 
-  <section class="card" id="result" hidden>
-    <a class="btn" id="dl" download>Download patched APK</a>
-    <p class="note">
+  <section class="mana-card panel" data-type="primary" id="result" hidden>
+    <a class="mana-button" data-variant="primary" data-size="md" data-full-width data-has-text data-has-icon id="dl" download><span class="mana-button-contents"><span class="mana-button-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 2a1 1 0 0 1 1 1v10.59l3.3-3.3a1 1 0 1 1 1.4 1.42l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.42l3.3 3.3V3a1 1 0 0 1 1-1ZM3 20a1 1 0 1 0 0 2h18a1 1 0 1 0 0-2H3Z"/></svg></span><span class="mana-button-children mana-text-md-medium"><span class="mana-button-text">Download patched APK</span></span></span></a>
+    <p class="mana-text-sm-normal note">
       <span id="note-side">1. Installs as <b>Discord Cinder</b> (<code id="res-pkg">com.discord.release</code>) next to your normal Discord.</span>
       <span id="note-replace" hidden>1. Uninstall Play Store Discord first — Android won't update an app signed with a different key.</span><br>
       2. Open the downloaded APK and allow your browser to install apps if prompted.<br>
@@ -386,7 +106,7 @@
     </p>
   </section>
 
-  <p class="meta-line">
+  <p class="mana-text-sm-normal meta-line">
     Runs 100% client-side in your browser using WebCrypto. Unofficial and not affiliated with Discord.
   </p>
 </main>

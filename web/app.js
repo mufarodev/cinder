@@ -111,8 +111,11 @@ function populateBuilds(items) {
 
 function switchTab(tab) {
   activeTab = tab;
-  $('tab-download').setAttribute('aria-selected', String(tab === 'download'));
-  $('tab-local').setAttribute('aria-selected', String(tab === 'local'));
+  for (const t of ['download', 'local']) {
+    const el = $(`tab-${t}`);
+    el.setAttribute('aria-selected', String(tab === t));
+    el.toggleAttribute('data-selected', tab === t);
+  }
   $('panel-download').hidden = tab !== 'download';
   $('panel-local').hidden = tab !== 'local';
   $('manual').hidden = true;
@@ -138,13 +141,13 @@ function checkPackage() {
   if (activeTab === 'download') {
     const p = $('pkg').value.trim();
     const bad = $('mode').value === 'side' && (!PKG_RE.test(p) || p === 'com.discord' || p.length > 127);
-    $('pkg').setAttribute('aria-invalid', String(bad));
+    $('pkg').parentElement.toggleAttribute('data-error', bad);
     return !bad;
   }
   if ($('local-mode').value === 'rename') {
     const p = $('local-pkg').value.trim();
     const bad = !PKG_RE.test(p) || p.length > 127;
-    $('local-pkg').setAttribute('aria-invalid', String(bad));
+    $('local-pkg').parentElement.toggleAttribute('data-error', bad);
     return !bad;
   }
   return true;
@@ -189,19 +192,27 @@ dz.addEventListener('drop', (ev) => {
 
 function step(label) {
   const li = document.createElement('li');
-  li.innerHTML = '<span></span><span class="state">waiting</span><span class="bar"><i></i></span>';
+  li.innerHTML =
+    '<span class="mana-text-sm-medium"></span><span class="state mana-text-sm-normal">waiting</span>' +
+    '<div class="mana-progressbar" data-size="sm" data-animated role="progressbar" aria-valuemin="0" aria-valuemax="100">' +
+    '<div class="mana-progressbar-fill" style="transform:translate3d(-100%,0,0)"></div></div>';
   li.firstChild.textContent = label;
   $('steps').append(li);
   const st = li.querySelector('.state');
-  const bar = li.querySelector('i');
+  const track = li.querySelector('.mana-progressbar');
+  const bar = li.querySelector('.mana-progressbar-fill');
+  const setBar = (pct) => {
+    bar.style.transform = `translate3d(${pct - 100}%,0,0)`;
+    track.setAttribute('aria-valuenow', String(pct));
+  };
   return {
     progress(f, text) {
-      bar.style.width = `${Math.max(0, Math.min(100, Math.round(f * 100)))}%`;
+      setBar(Math.max(0, Math.min(100, Math.round(f * 100))));
       st.textContent = text ?? `${Math.round(f * 100)}%`;
     },
     done(text = 'done') {
       li.className = 'done';
-      bar.style.width = '100%';
+      setBar(100);
       st.textContent = text;
     },
     fail(text = 'failed') {
@@ -220,7 +231,7 @@ const mb = (n) => `${(n / 1048576).toFixed(1)} MB`;
 
 function showError(err) {
   console.error(err);
-  $('err').textContent = `Error: ${err?.message || err}`;
+  $('err-text').textContent = `Error: ${err?.message || err}`;
   $('err').hidden = false;
   $('go').disabled = false;
 }
@@ -469,7 +480,7 @@ function showManual(vc) {
 
 $('go').onclick = async () => {
   if (!checkPackage()) {
-    $('err').textContent =
+    $('err-text').textContent =
       'Package name must look like com.example.app (letters, digits, _; at least two segments) and differ from com.discord for side-by-side install.';
     $('err').hidden = false;
     return;
