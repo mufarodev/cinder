@@ -10,15 +10,6 @@ h1 { color: var(--text-strong); margin: 0; }
 .mana-button[data-size="md"] { min-height: var(--control-input-height-md); }
 .mana-button-contents { width: 100%; justify-content: center; }
 a.mana-button { text-decoration: none; }
-.mana-select-trigger { position: relative; padding: 0; }
-.select-native {
-  appearance: none; -webkit-appearance: none; flex: 1; min-width: 0; align-self: stretch;
-  background: transparent; border: 0; color: inherit; font-family: inherit;
-  padding: 0 var(--space-32) 0 var(--space-12); cursor: pointer; outline: none;
-}
-.select-native option { background: var(--background-base-low); color: var(--text-default); }
-.mana-select-chevron { position: absolute; right: var(--space-8); pointer-events: none; margin: 0; }
-.mana-select-trigger:focus-within { border-color: var(--input-border-active); }
 .static-value { display: flex; align-items: center; min-height: var(--control-input-height-md); }
 .mana-tabbar { margin-top: var(--space-4); }
 
@@ -50,4 +41,3 @@ code { font-family: var(--font-code); font-size: .9em; color: var(--text-default
 ul.links { padding-left: var(--space-20); margin: var(--space-8) 0 var(--space-12); }
 a:not(.mana-button) { color: var(--text-link); }
 .meta-line { margin: var(--space-8) 0 0; }
-.mana-tag { min-height: 28px; padding: var(--space-4) var(--space-10); }

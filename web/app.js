@@ -2,6 +2,7 @@
 import { PROXY as CONFIG_PROXY, TRACKER, VERIFIED } from './config.js';
 import { buildPatchedApk, classifyApkFiles } from './lib/apk.js';
 import { decodeIdentity } from './lib/sign.js';
+import './mana-select.js';
 
 const $ = (id) => document.getElementById(id);
 

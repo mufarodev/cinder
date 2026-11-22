@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en" class="theme-dark">
+<html lang="en" class="theme-darker">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#1a1a1e">
+<meta name="theme-color" content="#0b0b0d">
 <title>Cinder Mobile — Web Patcher</title>
 <meta name="description" content="Patch Discord Phoenix with Cinder live in your browser: native runtime, Mana UI SDK, access unlock, and DevTools — nothing uploaded.">
 <link rel="stylesheet" href="mana/fonts.css">
@@ -17,15 +17,6 @@
 <main>
   <h1 class="mana-heading-xl-bold">Cinder Mobile</h1>
 
-  <div class="mana-tag-group" aria-label="Included patches">
-    <span class="mana-tag mana-text-sm-medium">Native Runtime</span>
-    <span class="mana-tag mana-text-sm-medium">Mana UI SDK</span>
-    <span class="mana-tag mana-text-sm-medium">Access Unlock</span>
-    <span class="mana-tag mana-text-sm-medium">Staff / DevTools</span>
-    <span class="mana-tag mana-text-sm-medium">16 KiB Aligned</span>
-    <span class="mana-tag mana-text-sm-medium">APK v2 Signed</span>
-  </div>
-
   <nav class="mana-tabbar" data-type="top" role="tablist" aria-label="APK source">
     <button type="button" class="mana-tabbar-item mana-text-md-medium" id="tab-download" role="tab" aria-selected="true" data-selected>Download Discord</button>
     <button type="button" class="mana-tabbar-item mana-text-md-medium" id="tab-local" role="tab" aria-selected="false">Local APK</button>
@@ -35,19 +26,19 @@
   <section class="mana-card panel" data-type="primary" id="panel-download">
     <div class="mana-field">
       <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="ver">Discord build</label></div>
-      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="ver"></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
+      <div class="mana-field-control"><select id="ver" data-mana-select></select></div>
     </div>
     <div class="mana-field">
       <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="dpi">Screen density</label></div>
-      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="dpi"></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
+      <div class="mana-field-control"><select id="dpi" data-mana-select></select></div>
     </div>
     <div class="mana-field">
       <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="lang">Language</label></div>
-      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="lang"></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
+      <div class="mana-field-control"><select id="lang" data-mana-select></select></div>
     </div>
     <div class="mana-field">
       <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="mode">Install</label></div>
-      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="mode"><option value="side" selected>Next to Discord</option><option value="replace">Replace Discord</option></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
+      <div class="mana-field-control"><select id="mode" data-mana-select><option value="side" selected>Next to Discord</option><option value="replace">Replace Discord</option></select></div>
     </div>
     <div id="pkg-row"><div class="mana-field">
       <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="pkg">Package name</label></div>
@@ -69,7 +60,7 @@
     <ul class="picked-list mana-text-sm-normal" id="local-list" hidden></ul>
     <div class="mana-field">
       <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="local-mode">Package</label></div>
-      <div class="mana-field-control"><span class="mana-select-trigger" data-full-width><select class="select-native mana-text-md-normal" id="local-mode"><option value="keep" selected>Keep original package</option><option value="rename">Custom package name</option></select><svg class="mana-select-chevron" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.3 9.3a1 1 0 0 1 1.4 0l5.3 5.29 5.3-5.3a1 1 0 1 1 1.4 1.42l-6 6a1 1 0 0 1-1.4 0l-6-6a1 1 0 0 1 0-1.42Z"/></svg></span></div>
+      <div class="mana-field-control"><select id="local-mode" data-mana-select><option value="keep" selected>Keep original package</option><option value="rename">Custom package name</option></select></div>
     </div>
     <div id="local-pkg-row" hidden><div class="mana-field">
       <div class="mana-field-label-container"><label class="mana-field-label mana-text-sm-semibold" for="local-pkg">Package name</label></div>
