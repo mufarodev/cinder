@@ -10,7 +10,12 @@ on a copy of the APK; the vanilla install is never modified.
 - `loader/` — Java/Kotlin bridge companion and Mana UI SDK
 - `patcher/` — smali patching tool
 - `tools/` — Kotlin stdlib shading and DEX verification helpers
+- `web/` — in-browser APK patcher & downloader (**live:** https://cinder-mobile.mufaro.workers.dev)
 - `build.sh` — build, test, and deploy wrapper
+
+## Web Patcher
+
+Patch and download a signed Discord Phoenix APK directly in your browser (no PC or CLI needed): **[https://cinder-mobile.mufaro.workers.dev](https://cinder-mobile.mufaro.workers.dev)** (see [`web/README.md`](web/README.md)).
 
 ## Build
 

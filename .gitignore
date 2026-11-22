@@ -10,6 +10,9 @@ __pycache__/
 *.idsig
 *.dex
 *.so
+!web/payload/*.dex
+!web/payload/*.so
+web/.wrangler/
 *.jks
 *.zip
 *.provisionprofile

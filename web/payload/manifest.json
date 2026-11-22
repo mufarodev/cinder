@@ -1,0 +1,12 @@
+{
+  "loaderDex": "classes2.dex",
+  "runtimeSo": "libcinder_mobile.so",
+  "pluginLibs": [
+    "libhello_cinder_mobile.so"
+  ],
+  "sha256": {
+    "classes2.dex": "e5e4ce7ea24a9f467b4304abd443f5e98b71afb3b7acbbf09a785930edec2844",
+    "libcinder_mobile.so": "873b70a1cb86d6e8297c1925d5dd24267a2b9c2a4fcc73dd5bd66bdc057ea2ac",
+    "libhello_cinder_mobile.so": "ffbcf0f3e7604859da26b51129bb7d9d426eb4c224bcd549ced5b68e03a3418d"
+  }
+}

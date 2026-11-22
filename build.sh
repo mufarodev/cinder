@@ -159,7 +159,19 @@ fi
 
 build_loader_dex() {
   rm -rf "$BUILD_DIR/loader"
-  mkdir -p "$BUILD_DIR/loader/classes" "$BUILD_DIR/loader/shaded" "$BUILD_DIR/loader/dex"
+  mkdir -p "$BUILD_DIR/loader/stubs" "$BUILD_DIR/loader/classes" "$BUILD_DIR/loader/shaded" "$BUILD_DIR/loader/dex"
+
+  STUB_LIB_CP=""
+  STUB_R8_ARGS=()
+  mapfile -t STUB_JAVA_SRCS < <(find "$LOADER_DIR/stubs" -name '*.java' 2>/dev/null | sort)
+  if [[ ${#STUB_JAVA_SRCS[@]} -gt 0 ]]; then
+    javac -source "$JAVA_TARGET" -target "$JAVA_TARGET" -Xlint:-options \
+      -classpath "$ANDROID_JAR" \
+      -d "$BUILD_DIR/loader/stubs" \
+      "${STUB_JAVA_SRCS[@]}"
+    STUB_LIB_CP=":$BUILD_DIR/loader/stubs"
+    STUB_R8_ARGS=(--lib "$BUILD_DIR/loader/stubs")
+  fi
 
   mapfile -t LOADER_KT_SRCS < <(
     find "$LOADER_DIR/src/main/kotlin" "$LOADER_DIR/example/src/main/kotlin" \
@@ -180,12 +192,12 @@ build_loader_dex() {
       -Xlambdas=indy \
       -Xno-param-assertions -Xno-call-assertions -Xno-receiver-assertions \
       -no-reflect \
-      -classpath "$ANDROID_JAR" \
+      -classpath "$ANDROID_JAR$STUB_LIB_CP" \
       -d "$BUILD_DIR/loader/classes" \
       "${LOADER_KT_SRCS[@]}" "${LOADER_JAVA_SRCS[@]}"
 
     javac -source "$JAVA_TARGET" -target "$JAVA_TARGET" -Xlint:-options \
-      -classpath "$ANDROID_JAR:$KOTLIN_STDLIB:$BUILD_DIR/loader/classes" \
+      -classpath "$ANDROID_JAR$STUB_LIB_CP:$KOTLIN_STDLIB:$BUILD_DIR/loader/classes" \
       -d "$BUILD_DIR/loader/classes" \
       "${LOADER_JAVA_SRCS[@]}"
 
@@ -198,22 +210,22 @@ build_loader_dex() {
     if [[ -f "$D8_JAR" && -f "$LOADER_DIR/r8-loader.pro" ]]; then
 
       java -Xmx2G -cp "$D8_JAR" com.android.tools.r8.R8 \
-        --release --min-api 26 --lib "$ANDROID_JAR" \
+        --release --min-api 26 --lib "$ANDROID_JAR" "${STUB_R8_ARGS[@]}" \
         --pg-conf "$LOADER_DIR/r8-loader.pro" \
         --output "$BUILD_DIR/loader/dex" \
         "${SHADED_CLASSES[@]}"
     else
-      "$D8" --min-api 26 --lib "$ANDROID_JAR" \
+      "$D8" --min-api 26 --lib "$ANDROID_JAR" "${STUB_R8_ARGS[@]}" \
         --output "$BUILD_DIR/loader/dex" \
         "${SHADED_CLASSES[@]}"
     fi
   else
     javac -source "$JAVA_TARGET" -target "$JAVA_TARGET" -Xlint:-options \
-      -classpath "$ANDROID_JAR" \
+      -classpath "$ANDROID_JAR$STUB_LIB_CP" \
       -d "$BUILD_DIR/loader/classes" \
       "${LOADER_JAVA_SRCS[@]}"
     mapfile -t LOADER_CLASSES < <(find "$BUILD_DIR/loader/classes" -name '*.class' | sort)
-    "$D8" --min-api 26 --lib "$ANDROID_JAR" \
+    "$D8" --min-api 26 --lib "$ANDROID_JAR" "${STUB_R8_ARGS[@]}" \
       --output "$BUILD_DIR/loader/dex" \
       "${LOADER_CLASSES[@]}"
   fi

@@ -80,6 +80,7 @@ public final class Loader {
         Context appCtx = context != null ? context.getApplicationContext() : null;
         if (appCtx == null) appCtx = context;
         appContext = appCtx;
+        bootstrapNativeRuntime(appCtx);
 
         BridgeRegistry.init();
         CinderNative.init(appCtx);
@@ -724,6 +725,43 @@ public final class Loader {
     } catch (Throwable t) {
       Log.e(TAG, "onLog failed", t);
     }
+  }
+
+  private static void bootstrapNativeRuntime(Context appCtx) {
+    if (appCtx != null) {
+      try {
+        File dir = new File(appCtx.getFilesDir(), "cinder");
+        if (!dir.exists()) {
+          dir.mkdirs();
+        }
+        File cfg = new File(dir, "cinder.toml");
+        if (!cfg.exists()) {
+          FileOutputStream fos = new FileOutputStream(cfg);
+          try {
+            fos.write("log = info\nplugins = true\nverify_only = true\n".getBytes("UTF-8"));
+          } finally {
+            try {
+              fos.close();
+            } catch (IOException ignored) {
+            }
+          }
+        }
+      } catch (Throwable t) {
+        Log.w(TAG, "bootstrap cinder.toml failed", t);
+      }
+    }
+    try {
+      System.loadLibrary("cinder_mobile");
+    } catch (Throwable ignored) {
+    }
+  }
+
+  public static boolean dispatchNative(long handle, byte[] frame) {
+    byte[] filtered = onDispatch(frame);
+    if (filtered == null) {
+      return true;
+    }
+    return com.discord.nativeapp.bridge.WasmRuntime.nativeDispatch(handle, filtered);
   }
 
   public static byte[] onDispatch(byte[] frame) {

@@ -24,10 +24,21 @@ fi
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf "$TMP_DIR"' EXIT
 
+STUB_CLS="$TMP_DIR/stub_classes"
 MAIN_CLS="$TMP_DIR/main_classes"
 TEST_CLS="$TMP_DIR/test_classes"
 SHADED_CLS="$TMP_DIR/shaded_classes"
-mkdir -p "$MAIN_CLS" "$TEST_CLS" "$SHADED_CLS"
+mkdir -p "$STUB_CLS" "$MAIN_CLS" "$TEST_CLS" "$SHADED_CLS"
+
+STUB_CP=""
+mapfile -t STUB_JAVA < <(find "$LOADER_DIR/stubs" -name '*.java' 2>/dev/null | sort)
+if [[ ${#STUB_JAVA[@]} -gt 0 ]]; then
+  javac -source "$JAVA_TARGET" -target "$JAVA_TARGET" -Xlint:-options \
+    -classpath "$ANDROID_JAR" \
+    -d "$STUB_CLS" \
+    "${STUB_JAVA[@]}"
+  STUB_CP=":$STUB_CLS"
+fi
 
 mapfile -t MAIN_KT < <(
   find "$LOADER_DIR/src/main/kotlin" "$LOADER_DIR/example/src/main/kotlin" \
@@ -50,12 +61,12 @@ if [[ ${#MAIN_KT[@]} -gt 0 ]]; then
     -Xlambdas=indy \
     -Xno-param-assertions -Xno-call-assertions -Xno-receiver-assertions \
     -no-reflect \
-    -classpath "$ANDROID_JAR" \
+    -classpath "$ANDROID_JAR$STUB_CP" \
     -d "$MAIN_CLS" \
     "${MAIN_KT[@]}" "${MAIN_JAVA[@]}"
 fi
 javac -source "$JAVA_TARGET" -target "$JAVA_TARGET" -Xlint:-options \
-  -classpath "$ANDROID_JAR:$KOTLIN_STDLIB:$MAIN_CLS" \
+  -classpath "$ANDROID_JAR$STUB_CP:$KOTLIN_STDLIB:$MAIN_CLS" \
   -d "$MAIN_CLS" \
   "${MAIN_JAVA[@]}"
 
@@ -75,7 +86,7 @@ javac -source "$JAVA_TARGET" -target "$JAVA_TARGET" -Xlint:-options \
   "${TEST_JAVA[@]}"
 
 echo "== [3/4] Running Java + Kotlin unit tests =="
-TEST_CP="$TEST_CLS:$MAIN_CLS:$KOTLIN_STDLIB:$ANDROID_JAR"
+TEST_CP="$TEST_CLS:$MAIN_CLS:$KOTLIN_STDLIB:$ANDROID_JAR$STUB_CP"
 java -cp "$TEST_CP" com.discord.loader.LoaderTest
 java -cp "$TEST_CP" com.discord.loader.UiOpsTest
 java -cp "$TEST_CP" com.discord.loader.CinderSettingsTest
@@ -95,7 +106,7 @@ if [[ ${#MAIN_KT[@]} -gt 0 || ${#TEST_KT[@]} -gt 0 ]]; then
     --in "$MAIN_CLS" --in "$TEST_CLS" \
     --stdlib "$KOTLIN_STDLIB" \
     --out "$SHADED_CLS"
-  SHADED_CP="$SHADED_CLS:$ANDROID_JAR"
+  SHADED_CP="$SHADED_CLS:$ANDROID_JAR$STUB_CP"
   java -cp "$SHADED_CP" com.discord.loader.LoaderTest
   java -cp "$SHADED_CP" com.discord.loader.CinderSettingsTest
   java -cp "$SHADED_CP" com.discord.loader.mana.ManaDslSmokeTest
