@@ -731,6 +731,29 @@ object ThemeAndIconsTest {
         )
     }
 
+    private fun testScrapedInputBackgroundMustBeNeutral() {
+        fun box(id: Int, bg: Long) = UiOps.create().createView(
+            id,
+            "view",
+            p(
+                "minHeight" to UiOps.Value.ofInt(40),
+                "radius" to UiOps.Value.ofInt(8),
+                "borderWidth" to UiOps.Value.ofInt(1),
+                "borderColor" to colorVal(0xFF4E5058L),
+                "background" to colorVal(bg),
+            ),
+        )
+        // A saturated green view with the search box's shape must NOT become INPUT_BG
+        ThemeEngine.observeBatch(box(60, 0xFF008545L).ops(), applyReskin = false)
+        checkCond(
+            ThemeEngine.color(ColorToken.INPUT_BG) != 0xFF008545L,
+            "saturated green rejected as INPUT_BG",
+        )
+        // A neutral dark input background is still accepted
+        ThemeEngine.observeBatch(box(61, 0xFF1E1F22L).ops(), applyReskin = false)
+        checkEq(ThemeEngine.color(ColorToken.INPUT_BG), 0xFF1E1F22L, "neutral input bg scraped")
+    }
+
     @JvmStatic
     fun main(args: Array<String>) {
         runTest("testManaIconsCatalogAndIconHelper", ::testManaIconsCatalogAndIconHelper)
@@ -738,6 +761,7 @@ object ThemeAndIconsTest {
         runTest("testNitroCustomThemeOverrideLayering", ::testNitroCustomThemeOverrideLayering)
         runTest("testLiveReskinningAtomicDiffAndUnbind", ::testLiveReskinningAtomicDiffAndUnbind)
         runTest("testCinderSettingsIconsAndLiveThemeSwitch", ::testCinderSettingsIconsAndLiveThemeSwitch)
+        runTest("testScrapedInputBackgroundMustBeNeutral", ::testScrapedInputBackgroundMustBeNeutral)
         println("ALL $passed THEME AND ICONS TESTS PASSED")
     }
 }

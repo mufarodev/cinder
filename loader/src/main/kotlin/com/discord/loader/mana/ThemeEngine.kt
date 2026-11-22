@@ -449,7 +449,7 @@ object ThemeEngine {
                             ) {
                                 val inBg = extractColorProp(op, "background")
                                 val inBorder = extractColorProp(op, "borderColor")
-                                if (inBg >= 0L && !scraped.containsKey(ColorToken.INPUT_BG)) {
+                                if (inBg >= 0L && isNeutralColor(inBg) && !scraped.containsKey(ColorToken.INPUT_BG)) {
                                     scraped[ColorToken.INPUT_BG] = inBg
                                 }
                                 if (inBorder >= 0L && !scraped.containsKey(ColorToken.INPUT_BORDER)) {
@@ -804,6 +804,18 @@ object ThemeEngine {
         } else {
             -1L
         }
+    }
+
+    /**
+     * True when [argb] is grey-ish (RGB channels within 32 of each other). Input backgrounds are
+     * neutral in every Discord theme; a saturated match (e.g. a green banner that happens to share
+     * the search box's 40dp/8dp/bordered shape) is the wrong view and must not become INPUT_BG.
+     */
+    private fun isNeutralColor(argb: Long): Boolean {
+        val r = ((argb ushr 16) and 0xFFL).toInt()
+        val g = ((argb ushr 8) and 0xFFL).toInt()
+        val b = (argb and 0xFFL).toInt()
+        return maxOf(r, g, b) - minOf(r, g, b) <= 32
     }
 
     private fun isOpaqueColor(argb: Long): Boolean {

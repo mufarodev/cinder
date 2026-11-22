@@ -362,6 +362,71 @@ object BuiltinPluginsTest {
         checkEq(diag.hostCallCount(), 2, "Core CinderDiagnosticsPlugin still receives calls")
     }
 
+    // ---- 3b. TextReplacePlugin: outgoing message rewrite ----
+
+    private fun testTextReplacePlugin() {
+        BridgeRegistry.register(arrayOf("", "Networking", "Networking.request"))
+        val modNet = BridgeRegistry.moduleId("Networking")
+        val methReq = BridgeRegistry.methodId("Networking", "request")
+        val host = installSyncHost()
+        val plugin = TextReplacePlugin()
+        Loader.setPluginsForTests(plugin)
+        plugin.onLoad(null)
+
+        // Real Record layout: tag 0x08, i32 fieldCount, then (u16 id, tag 0x06, i32 len, utf8) strings.
+        fun record(method: String, url: String): ByteArray {
+            val out = java.io.ByteArrayOutputStream()
+            fun le(n: Int, w: Int) { for (k in 0 until w) out.write((n shr (8 * k)) and 0xff) }
+            out.write(0x08); le(2, 4)
+            for ((id, v) in listOf(1 to method, 2 to url)) {
+                val b = v.toByteArray(StandardCharsets.UTF_8)
+                le(id, 2); out.write(0x06); le(b.size, 4); out.write(b)
+            }
+            return out.toByteArray()
+        }
+        fun send(url: String, body: String): Frame? {
+            val base = Frame.build(Frame.KIND_REQUEST, modNet, methReq, 7, record("POST", url))
+            val raw = Frame.parse(base)!!.withTrailing(body.toByteArray(StandardCharsets.UTF_8))
+            Loader.dispatchInvoke(host, raw)
+            return Frame.parse(host.lastInvokeBytes)
+        }
+        fun bodyOf(f: Frame?) = String(f!!.trailing(), StandardCharsets.UTF_8)
+        val url = "https://discord.com/api/v9/channels/123456/messages"
+
+        // parsing: skips junk/empty-find lines, trims, allows empty replacement
+        val parsed = TextReplacePlugin.parseRules("teh => the\nnonsense\n => x\nrm =>\n")
+        checkEq(parsed.map { it.find + "|" + it.replace }, listOf("teh|the", "rm|"), "rule parsing")
+
+        // no rules -> untouched
+        val orig = "{\"content\":\"teh cat\"}"
+        checkEq(bodyOf(send(url, orig)), orig, "no rules: pass-through")
+
+        plugin.setRulesText("teh => the\nthe cat => the dog")
+        checkEq(bodyOf(send(url, orig)), "{\"content\":\"the dog\"}", "rules applied sequentially")
+
+        // escapes: quote, newline, emoji (surrogate pair escape + raw), other fields untouched
+        val body = "{\"mobile_network_type\":\"teh\",\"content\":\"teh \\\"q\\\"\\n\\ud83d\\ude00 \ud83d\ude00\",\"nonce\":\"1\",\"flags\":0}"
+        val out = bodyOf(send(url, body))
+        checkEq(
+            out,
+            "{\"mobile_network_type\":\"teh\",\"content\":\"the \\\"q\\\"\\n\ud83d\ude00 \ud83d\ude00\",\"nonce\":\"1\",\"flags\":0}",
+            "escapes round-trip; nested/other fields untouched ($out)",
+        )
+
+        // content nested deeper is not top-level -> ignored
+        val nested = "{\"embed\":{\"content\":\"teh\"}}"
+        checkEq(bodyOf(send(url, nested)), nested, "nested content ignored")
+
+        // edits (PATCH path) are rewritten; ack / reactions / other hosts are not
+        checkEq(bodyOf(send("$url/987654", orig)), "{\"content\":\"the dog\"}", "edit path rewritten")
+        checkEq(bodyOf(send("$url/987654/ack", orig)), orig, "ack path untouched")
+        checkEq(bodyOf(send("https://discord.com/api/v9/channels/1/threads", orig)), orig, "non-message path untouched")
+
+        // malformed body -> pass-through, no throw
+        checkEq(bodyOf(send(url, "{\"content\":\"teh")), "{\"content\":\"teh", "unterminated string pass-through")
+        checkEq(bodyOf(send(url, "{\"content\":null}")), "{\"content\":null}", "null content pass-through")
+    }
+
     private fun testNoTelemetryPluginInterceptionAndSafety() {
         BridgeRegistry.register(
             arrayOf(
@@ -632,6 +697,7 @@ object BuiltinPluginsTest {
         runTest("cinderNativeManifestDeferredFlushAndBuildDrift") { testCinderNativeManifestDeferredFlushAndBuildDrift() }
         runTest("coreLockedOnAndPluginDispatchGating") { testCoreLockedOnAndPluginDispatchGating() }
         runTest("noTelemetryPluginInterceptionAndSafety") { testNoTelemetryPluginInterceptionAndSafety() }
+        runTest("textReplacePlugin") { testTextReplacePlugin() }
         runTest("vencordPluginsUiAndReactiveRestartBanner") { testVencordPluginsUiAndReactiveRestartBanner() }
         runTest("pluginDisplayNames") { testPluginDisplayNames() }
         println("ALL $passed BuiltinPluginsTest TESTS PASSED")
