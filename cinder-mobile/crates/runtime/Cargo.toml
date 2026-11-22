@@ -1,0 +1,11 @@
+[package]
+name = "cinder-mobile"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+name = "cinder_mobile"
+crate-type = ["cdylib"]
+
+[dependencies]
+cinder-mobile-api = { path = "../plugin-api" }

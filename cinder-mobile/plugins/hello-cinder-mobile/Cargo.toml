@@ -1,0 +1,11 @@
+[package]
+name = "hello-cinder-mobile"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+name = "hello_cinder_mobile"
+crate-type = ["cdylib"]
+
+[dependencies]
+cinder-mobile-api = { path = "../../crates/plugin-api" }

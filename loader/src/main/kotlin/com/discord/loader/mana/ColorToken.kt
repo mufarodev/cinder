@@ -1,0 +1,83 @@
+package com.discord.loader.mana
+
+enum class ColorToken {
+    BG_BASE_PRIMARY,
+
+    BG_BASE_SECONDARY,
+
+    BG_BASE_TERTIARY,
+
+    BG_MOD_SUBTLE,
+
+    BG_ROW_ACTIVE,
+
+    HEADER_BG,
+
+    SHEET_BG,
+
+    SHEET_HANDLE,
+
+    TEXT_PRIMARY,
+
+    TEXT_SECONDARY,
+
+    TEXT_MUTED,
+
+    TEXT_LINK,
+
+    ICON_PRIMARY,
+
+    ICON_MUTED,
+
+    DIVIDER,
+
+    BRAND_500,
+
+    DANGER,
+
+    DANGER_TEXT,
+
+    POSITIVE,
+
+    WARNING,
+
+    CALLOUT_INFO_BG,
+
+    CALLOUT_WARNING_BG,
+
+    CALLOUT_DANGER_BG,
+
+    CALLOUT_POSITIVE_BG,
+
+    CALLOUT_BRAND_BG,
+
+    BUTTON_PRIMARY_BG,
+
+    BUTTON_PRIMARY_TEXT,
+
+    BUTTON_BORDER,
+
+    INPUT_BG,
+
+    INPUT_BORDER,
+
+    INPUT_TEXT,
+
+    INPUT_PLACEHOLDER,
+
+    SWITCH_ON_BG,
+
+    SWITCH_ON_BORDER,
+
+    SWITCH_OFF_BG,
+
+    SWITCH_OFF_BORDER,
+
+    SWITCH_THUMB,
+
+    RADIO_UNCHECKED_BORDER,
+
+    SEGMENT_TRACK_BG,
+
+    SEGMENT_THUMB_BG,
+}

@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = ["crates/plugin-api", "crates/runtime", "plugins/hello-cinder-mobile"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[profile.release]
+lto = "thin"
+opt-level = "z"
+strip = true

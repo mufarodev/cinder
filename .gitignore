@@ -1,0 +1,16 @@
+# build outputs
+build/
+cinder-mobile/target/
+cinder-mobile/build/
+__pycache__/
+*.pyc
+
+# local artifacts
+*.apk
+*.idsig
+*.dex
+*.so
+*.jks
+*.zip
+*.provisionprofile
+nohup.out

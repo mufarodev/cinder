@@ -1,0 +1,4 @@
+[package]
+name = "cinder-mobile-api"
+version.workspace = true
+edition.workspace = true
